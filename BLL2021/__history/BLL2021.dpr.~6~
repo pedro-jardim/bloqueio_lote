@@ -1,0 +1,21 @@
+program BLL2021;
+
+uses
+  Vcl.Forms,
+  uPrincipal in 'uPrincipal.pas' {frmPrincipal},
+  uIServidorBLL in 'uIServidorBLL.pas',
+  Vcl.Themes,
+  Vcl.Styles,
+  uBloqueioLote in 'uBloqueioLote.pas' {Form2};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  TStyleManager.TrySetStyle('Sapphire Kamri');
+  Application.Title := 'BLL2021 - Bloqueio de Lote';
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TForm2, Form2);
+  Application.Run;
+end.

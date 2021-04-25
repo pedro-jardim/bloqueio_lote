@@ -1,0 +1,46 @@
+unit uPrincipal;
+
+interface
+
+uses
+  uIServidorBLL,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus;
+
+type
+  TfrmPrincipal = class(TForm)
+    MainMenu1: TMainMenu;
+    estarServidor1: TMenuItem;
+    ScrollBox1: TScrollBox;
+    Sair1: TMenuItem;
+    ConsultarXML1: TMenuItem;
+    LerArquivodeBloqueio1: TMenuItem;
+    procedure estarServidor1Click(Sender: TObject);
+    procedure Sair1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmPrincipal.estarServidor1Click(Sender: TObject);
+var
+  Service : IServidorBLL;
+begin
+  Service := uIServidorBLL.GetIServidorBLL;
+  Showmessage(Service.mensagemBoasVindas);
+end;
+
+procedure TfrmPrincipal.Sair1Click(Sender: TObject);
+begin
+  Close;
+end;
+
+end.
