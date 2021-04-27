@@ -3,7 +3,7 @@
 // WSDL File described below:
 // WSDL     : http://localhost:8080/wsdl/IServidorBLL
 // Version  : 1.0
-// (23/04/2021 22:33:25 - - $Rev: 96726 $)
+// (26/04/2021 21:50:53 - - $Rev: 96726 $)
 // ************************************************************************ //
 
 unit uIServidorBLL;
@@ -26,7 +26,7 @@ type
 
   // ************************************************************************ //
   // Namespace : urn:uServidorBLLIntf-IServidorBLL
-  // soapAction: urn:uServidorBLLIntf-IServidorBLL#mensagemBoasVindas
+  // soapAction: urn:uServidorBLLIntf-IServidorBLL#%operationName%
   // transport : http://schemas.xmlsoap.org/soap/http
   // style     : rpc
   // use       : encoded
@@ -38,6 +38,8 @@ type
   IServidorBLL = interface(IInvokable)
   ['{1E8977EB-0876-E722-950F-BFD038A93DFF}']
     function  mensagemBoasVindas: string; stdcall;
+    function  envioLaudoLoteBloqueado(const xml: string): string; stdcall;
+    function  envioEncerramentoLote(const xml: string): string; stdcall;
   end;
 
 function GetIServidorBLL(UseWSDL: Boolean=System.False; Addr: string=''; HTTPRIO: THTTPRIO = nil): IServidorBLL;
@@ -86,6 +88,6 @@ end;
 initialization
   { IServidorBLL }
   InvRegistry.RegisterInterface(TypeInfo(IServidorBLL), 'urn:uServidorBLLIntf-IServidorBLL', '');
-  InvRegistry.RegisterDefaultSOAPAction(TypeInfo(IServidorBLL), 'urn:uServidorBLLIntf-IServidorBLL#mensagemBoasVindas');
+  InvRegistry.RegisterDefaultSOAPAction(TypeInfo(IServidorBLL), 'urn:uServidorBLLIntf-IServidorBLL#%operationName%');
 
 end.

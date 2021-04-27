@@ -12,6 +12,8 @@ type
   IServidorBLL = interface(IInvokable)
   ['{B97FBB36-3194-4055-A5AF-791B416110EA}']
     function mensagemBoasVindas: String;
+    function envioLaudoLoteBloqueado(const xml: WideString): WideString;
+    function envioEncerramentoLote(const xml: WideString):WideString;
     { Methods of Invokable interface must not use the default }
     { calling convention; stdcall is recommended }
   end;

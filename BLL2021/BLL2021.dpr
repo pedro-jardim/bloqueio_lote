@@ -3,11 +3,11 @@ program BLL2021;
 uses
   Vcl.Forms,
   uPrincipal in 'uPrincipal.pas' {frmPrincipal},
-  uIServidorBLL in 'uIServidorBLL.pas',
   Vcl.Themes,
   Vcl.Styles,
   uBloqueioLote in 'uBloqueioLote.pas' {frmBloqueioLote},
-  udmBloqueio in 'udmBloqueio.pas' {dmBloqueio: TDataModule};
+  udmBloqueio in 'udmBloqueio.pas' {dmBloqueio: TDataModule},
+  uIServidorBLL in 'uIServidorBLL.pas';
 
 {$R *.res}
 

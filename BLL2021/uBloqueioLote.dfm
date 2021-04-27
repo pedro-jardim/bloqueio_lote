@@ -57,7 +57,7 @@ object frmBloqueioLote: TfrmBloqueioLote
       Top = 46
       Width = 565
       Height = 462
-      ActivePage = tabDados
+      ActivePage = tabEnvio
       Align = alClient
       TabOrder = 1
       object tabDados: TTabSheet
@@ -88,9 +88,6 @@ object frmBloqueioLote: TfrmBloqueioLote
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 553
             object Label2: TLabel
               Left = 36
               Top = 17
@@ -266,10 +263,6 @@ object frmBloqueioLote: TfrmBloqueioLote
             Padding.Bottom = 5
             ParentFont = False
             TabOrder = 1
-            ExplicitLeft = 0
-            ExplicitTop = 87
-            ExplicitWidth = 553
-            ExplicitHeight = 255
             object GroupBox3: TGroupBox
               Left = 7
               Top = 101
@@ -282,10 +275,6 @@ object frmBloqueioLote: TfrmBloqueioLote
               Padding.Right = 5
               Padding.Bottom = 5
               TabOrder = 0
-              ExplicitLeft = 6
-              ExplicitTop = 100
-              ExplicitWidth = 539
-              ExplicitHeight = 147
               object DBGrid1: TDBGrid
                 Left = 7
                 Top = 20
@@ -315,8 +304,6 @@ object frmBloqueioLote: TfrmBloqueioLote
               Font.Style = []
               ParentFont = False
               TabOrder = 1
-              ExplicitLeft = 6
-              ExplicitTop = 14
               object Label8: TLabel
                 Left = 12
                 Top = 4
@@ -379,9 +366,6 @@ object frmBloqueioLote: TfrmBloqueioLote
             Font.Style = []
             ParentFont = False
             TabOrder = 2
-            ExplicitLeft = 3
-            ExplicitTop = 299
-            ExplicitWidth = 547
           end
         end
       end
@@ -394,6 +378,75 @@ object frmBloqueioLote: TfrmBloqueioLote
           Height = 434
           Align = alClient
           TabOrder = 0
+        end
+      end
+      object tabEnvio: TTabSheet
+        Caption = 'tabEnvio'
+        ImageIndex = 2
+        object ScrollBox3: TScrollBox
+          Left = 0
+          Top = 0
+          Width = 557
+          Height = 434
+          Align = alClient
+          Color = clBtnFace
+          Padding.Left = 5
+          Padding.Top = 5
+          Padding.Right = 5
+          Padding.Bottom = 5
+          ParentColor = False
+          TabOrder = 0
+          ExplicitTop = 2
+          object GroupBox4: TGroupBox
+            Left = 5
+            Top = 5
+            Width = 543
+            Height = 419
+            Align = alTop
+            Caption = 'Identifica'#231#227'o'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            Padding.Left = 5
+            Padding.Top = 5
+            Padding.Right = 5
+            Padding.Bottom = 5
+            ParentFont = False
+            TabOrder = 0
+            ExplicitLeft = 2
+            ExplicitTop = 3
+            object btnEnvioXML: TButton
+              Left = 16
+              Top = 40
+              Width = 513
+              Height = 41
+              Caption = 'Envio do XML'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              TabOrder = 0
+              OnClick = btnEnvioXMLClick
+            end
+            object Memo1: TMemo
+              Left = 7
+              Top = 112
+              Width = 529
+              Height = 300
+              Align = alBottom
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -9
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              TabOrder = 1
+            end
+          end
         end
       end
     end

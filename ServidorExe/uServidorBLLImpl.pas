@@ -4,7 +4,10 @@ unit uServidorBLLImpl;
 
 interface
 
-uses Soap.InvokeRegistry, System.Types, Soap.XSBuiltIns, uServidorBLLIntf;
+uses
+  Soap.InvokeRegistry, System.Types, Soap.XSBuiltIns, uServidorBLLIntf, System.Classes;
+
+
 
 type
 
@@ -12,12 +15,43 @@ type
   TServidorBLL = class(TInvokableClass, IServidorBLL)
   public
     function mensagemBoasVindas: String;
+    function envioLaudoLoteBloqueado(const xml: WideString): WideString;
+    function envioEncerramentoLote(const xml: WideString):WideString;
   end;
 
 implementation
 
+uses
+  Xml.xmldom, Xml.XMLIntf, Xml.XMLDoc;
 
 { TServidorBLL }
+
+function TServidorBLL.envioEncerramentoLote(const xml: WideString): WideString;
+var
+  lxml : IXMLDocument;
+  lNodeListaProdutos, lNodeProduto, lNode: IXMLNode;
+begin
+  lxml := NewXMLDocument;
+  lxml.XML.Text := xml;
+  lxml.Active := True;
+  lxml.SaveToFile('C:\Pedro\Arquivo.xml');
+
+  lxml := NewXMLDocument;
+  lNodeListaProdutos := lxml.AddChild('ListaProdutos');
+  lNodeProduto := lNodeListaProdutos.AddChild('Produto');
+  lNodeProduto.AddChild('Nome').Text := 'Feijão';
+  lNodeProduto.AddChild('Valor').Text := '5.99';
+  lNodeProduto := lNodeListaProdutos.AddChild('Produto');
+  lNodeProduto.AddChild('Nome').Text := 'Arroz';
+  lNodeProduto.AddChild('Valor').Text := '30.00';
+  Result := lxml.XML.Text;
+end;
+
+function TServidorBLL.envioLaudoLoteBloqueado(
+  const xml: WideString): WideString;
+begin
+
+end;
 
 function TServidorBLL.mensagemBoasVindas: String;
 begin

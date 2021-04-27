@@ -3,6 +3,7 @@ unit uBloqueioLote;
 interface
 
 uses
+  uIServidorBLL,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Xml.xmldom, Xml.XMLIntf, Xml.XMLDoc,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Data.DB, Datasnap.DBClient,
@@ -49,8 +50,14 @@ type
     Label9: TLabel;
     DBGrid1: TDBGrid;
     cdsBloqueioDESCRICAO: TStringField;
+    tabEnvio: TTabSheet;
+    ScrollBox3: TScrollBox;
+    GroupBox4: TGroupBox;
+    btnEnvioXML: TButton;
+    Memo1: TMemo;
     procedure btnAbrirXMLClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
+    procedure btnEnvioXMLClick(Sender: TObject);
   private
     { Private declarations }
     procedure AbrirXML;
@@ -118,6 +125,16 @@ end;
 procedure TfrmBloqueioLote.btnSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TfrmBloqueioLote.btnEnvioXMLClick(Sender: TObject);
+var
+  Servidor : IServidorBLL;
+  lxml : WideString;
+begin
+  Servidor := uIServidorBll.GetIServidorBLL;
+  Memo1.Lines.Text := Servidor.envioEncerramentoLote(XMLDocument.XML.Text);
+
 end;
 
 procedure TfrmBloqueioLote.MostrarDadosXML;
