@@ -39,6 +39,7 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Destina'#231#227'o'
       TabOrder = 1
       TabStop = False
+      OnClick = btnDestinacaoClick
     end
     object btnEncerramento: TButton
       Left = 16

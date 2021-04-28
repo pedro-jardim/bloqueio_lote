@@ -5,6 +5,7 @@ interface
 uses
   uIServidorBLL,
   uBloqueioLote,
+  uDestinacao,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, System.UITypes,
   Vcl.Graphics,  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ComCtrls, Vcl.StdCtrls;
 
@@ -19,6 +20,7 @@ type
     procedure btnSairClick(Sender: TObject);
     procedure btnBloqueioLoteClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure btnDestinacaoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,6 +37,18 @@ implementation
 procedure TfrmPrincipal.btnBloqueioLoteClick(Sender: TObject);
 begin
   with TfrmBloqueioLote.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+end;
+
+procedure TfrmPrincipal.btnDestinacaoClick(Sender: TObject);
+begin
+  with TfrmDestinacao.Create(Self) do
   begin
     try
       ShowModal;

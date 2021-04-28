@@ -396,7 +396,6 @@ object frmBloqueioLote: TfrmBloqueioLote
           Padding.Bottom = 5
           ParentColor = False
           TabOrder = 0
-          ExplicitTop = 2
           object GroupBox4: TGroupBox
             Left = 5
             Top = 5
@@ -415,8 +414,6 @@ object frmBloqueioLote: TfrmBloqueioLote
             Padding.Bottom = 5
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 2
-            ExplicitTop = 3
             object btnEnvioXML: TButton
               Left = 16
               Top = 40
