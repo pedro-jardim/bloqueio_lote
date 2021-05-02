@@ -1,0 +1,22 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:wcf="http://schemas.datacontract.org/2004/07/wcfIntegracaoWMS">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:SetBloqueio>
+         <!--Optional:-->
+         <tem:_data>
+            <!--Optional:-->
+            <wcf:COD_ACAO>3</wcf:COD_ACAO>
+            <!--Optional:-->
+            <wcf:COD_BLOQUEIO_WEB>208745</wcf:COD_BLOQUEIO_WEB>
+            <!--Optional:-->
+            <wcf:COD_LOCAL_BLOQUEIO>158</wcf:COD_LOCAL_BLOQUEIO>
+            <!--Optional:-->
+            <wcf:EMAIL_USUARIO>cristiano@opsweb.com.br</wcf:EMAIL_USUARIO>
+            <!--Optional:-->
+            <wcf:OBSERVACAO>validando hml</wcf:OBSERVACAO>
+            <!--Optional:-->
+            <wcf:QTDE_CAIXAS>10</wcf:QTDE_CAIXAS>
+         </tem:_data>
+      </tem:SetBloqueio>
+   </soapenv:Body>
+</soapenv:Envelope>

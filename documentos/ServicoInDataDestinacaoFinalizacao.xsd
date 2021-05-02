@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:i="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/wcfIntegracaoWMS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DataBloqueioDest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="COD_DESTINACAO" type="xs:integer" />
+        <xs:element name="COD_BLOQUEIO_WEB" type="xs:long" />
+        <xs:element name="COD_LOCAL_BLOQUEIO" type="xs:integer" />
+        <xs:element name="OBSERVACAO" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

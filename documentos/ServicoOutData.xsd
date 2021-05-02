@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GENERICA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IDENTIFICACAO">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDENTIFICADOR" type="xs:string" />
+              <xs:element name="REQUISITANTE" type="xs:integer" />
+              <xs:element name="XSDVALIDACAO" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DADOSXML">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="INSPECAO">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="CENTRO_ORIGEM" type="xs:integer" />
+                    <xs:element name="CENTROS_DESTINOS">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="CENTRO_DESTINO" maxOccurs="unbounded" type="xs:integer" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ITENS">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="ITEM">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="COD_BLOQUEIO_WEB" type="xs:long" />
+                                <xs:element name="SKU" type="xs:string" />
+                                <xs:element name="DESCRICAO" type="xs:string" />
+                                <xs:element name="CATEGORIA" type="xs:string" />
+                                <xs:element name="DIVISAO" type="xs:string" />
+                                <xs:element name="DH_FABRICACAO" type="xs:string" />
+                                <xs:element name="DH_VENCIMENTO" type="xs:string" />
+                                <xs:element name="QTD_CAIXAS" type="xs:integer" />
+                                <xs:element name="QTD_PRODUTOS" />
+                                <xs:element name="COD_LPN" type="xs:string" />
+                                <xs:element name="DH_BLOQUEIO" type="xs:string" />
+                                <xs:element name="CODIGO_MOTIVO" type="xs:string" />
+                                <xs:element name="SOLICITANTE_BLOQUEIO" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="NUM_LAUDO_BLOQUEIO" type="xs:string" use="required" />
+                        <xs:attribute name="IDENT_OPER" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

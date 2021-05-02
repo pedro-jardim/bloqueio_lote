@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="GENERICA">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="IDENFICACAO" minOccurs="0">
+                  <xs:complexType>
+                    <xs:sequence>
+                    <xs:element name="IDENTIFICADOR" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>CODIGO/CNPJ FABRICA DO PALLET</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:whiteSpace value="preserve"/>
+                          <xs:minLength value="1"/>
+                          <xs:maxLength value="18"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                      
+                    <xs:element name="REQUISITANTE" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>CODIGO/CNPJ FABRICA DO PALLET</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:integer" />
+                      </xs:simpleType>
+                    </xs:element>
+                      
+                    <xs:element name="CNPJ_REQUISITANTE" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>CNPJ FABRICA DO PALLET</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:whiteSpace value="preserve"/>
+                          <xs:minLength value="1"/>
+                          <xs:maxLength value="18"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                      
+                    <xs:element name="DESTINO" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>CODIGO DO CD DE DESTINO</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:integer" />
+                      </xs:simpleType>
+                    </xs:element>
+                      
+                    <xs:element name="CNPJ_DESTINO" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>CNPJ DO CD DESTINO DO PALLET</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:whiteSpace value="preserve"/>
+                          <xs:minLength value="1"/>
+                          <xs:maxLength value="18"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="CENTRO_ORIGEM">
+                  <xs:annotation>
+                    <xs:documentation>CÓDIGO/CNPJ DOS DESTINOS</xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:integer"/>
+                  </xs:simpleType>
+                  
+                </xs:element>
+              
+		            <xs:element name="CENTROS_DESTINOS">
+			            <xs:annotation>
+				            <xs:documentation>CÓDIGO/CNPJ DOS DESTINOS</xs:documentation>
+			            </xs:annotation>
+			            <xs:complexType>
+				            <xs:sequence>
+					            <xs:element name="CENTRO_DESTINO" minOccurs="1">
+						            <xs:annotation>
+							            <xs:documentation>CODIGO/CNPJ DEPOSITANTE DO PALLET</xs:documentation>
+						            </xs:annotation>
+						            <xs:simpleType>
+							            <xs:restriction base="xs:string">
+								            <xs:whiteSpace value="preserve"/>
+								            <xs:minLength value="1"/>
+								            <xs:maxLength value="18"/>
+							            </xs:restriction>
+						            </xs:simpleType>
+					            </xs:element>
+				            </xs:sequence>
+			            </xs:complexType>
+		            </xs:element>
+                <xs:element name="ITENS" minOccurs="1" >
+                    <xs:annotation>
+                        <xs:documentation>TAG DA LISTA DE ITENS A PASSAREM PELA QUALIDADE</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>                            
+                            <xs:element name="ITEM" maxOccurs="unbounded" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+										                    <xs:element name="COD_BLOQUEIO_WEB" minOccurs="1">
+											                    <xs:annotation>
+												                    <xs:documentation>CÓDIGO ÚNICO ENVIADO DO BLOQUEIO.WEB PARA MANTER O REGISTRO.</xs:documentation>
+											                    </xs:annotation>
+											                    <xs:simpleType>
+												                    <xs:restriction base="xs:int">
+												                    <xs:minInclusive value="0"/><!-- Não aceita valor negativo -->
+												                    </xs:restriction>
+											                    </xs:simpleType>
+										                    </xs:element>
+                                      
+                                        <xs:element name="SKU" minOccurs="1">
+                                            <xs:annotation>
+                                                <xs:documentation>SKU DO PRODUTO</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:whiteSpace value="preserve"/>
+                                                    <xs:minLength value="1"/>
+                                                    <xs:maxLength value="30"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                      
+                                        <xs:element name="DESCRICAO" minOccurs="1">
+                                            <xs:annotation>
+                                                <xs:documentation>DESCRIÇÃO DO PRODUTO</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:whiteSpace value="preserve"/>
+                                                    <xs:minLength value="1"/>
+                                                    <xs:maxLength value="100"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                      
+                                        <xs:element name="CATEGORIA" minOccurs="0">
+                                            <xs:annotation>
+                                                <xs:documentation>CATEGORIA DO PRODUTO</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:whiteSpace value="preserve"/>
+                                                    <xs:minLength value="0"/>
+                                                    <xs:maxLength value="10"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                      
+                                        <xs:element name="DIVISAO" minOccurs="0">
+                                            <xs:annotation>
+                                                <xs:documentation>DIVISAO/CLASSIFICACAO/FAMILIA DO PRODUTO</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:whiteSpace value="preserve"/>
+                                                    <xs:minLength value="0"/>
+                                                    <xs:maxLength value="10"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                      
+                                        <xs:element name="DH_FABRICACAO" minOccurs="0">
+                                            <xs:annotation>
+                                                <xs:documentation>DATA/HORA FABRICAÇÃO DO PRODUTO DD/MM/YYYY HH:MM:SS</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:whiteSpace value="preserve"/>
+                                                    <xs:minLength value="0"/>
+                                                    <xs:maxLength value="19"/>
+                                                    <xs:pattern value="[0-9]{0}|[0-9][0-9][/][0-9][0-9][/][0-9][0-9][0-9][0-9][ ][0-9][0-9][:][0-9][0-9][:][0-9][0-9]"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                      
+                                        <xs:element name="DH_VENCIMENTO" minOccurs="0">
+                                            <xs:annotation>
+                                                <xs:documentation>DATA/HORA VENCIMENTO DO PRODUTO DD/MM/YYYY HH:MM:SS</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:whiteSpace value="preserve"/>
+                                                    <xs:minLength value="0"/>
+                                                    <xs:maxLength value="19"/>
+                                                    <xs:pattern value="[0-9]{0}|[0-9][0-9][/][0-9][0-9][/][0-9][0-9][0-9][0-9][ ][0-9][0-9][:][0-9][0-9][:][0-9][0-9]"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                      
+                                        <xs:element name="QTD_CAIXAS" minOccurs="0">
+                                            <xs:annotation>
+                                                <xs:documentation>QUANTIDADE A SER BLOQUEADA/DESBLOQUEADA EM CAIXAS. MAXIMO 10 CARACTERES</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:int">
+                                                    <xs:totalDigits value="10"/><!-- Total de campos a serem preenchidos-->
+                                                    <xs:minInclusive value="0"/><!-- Não aceita valor negativo -->
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                      
+                                        <xs:element name="COD_LPN" minOccurs="1">
+                                            <xs:annotation>
+                                                <xs:documentation>CODIGO DA ETIQUETA LPN DO PALLET</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:whiteSpace value="preserve"/>
+                                                    <xs:minLength value="1"/>
+                                                    <xs:maxLength value="60"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                      
+                                        <xs:element name="DH_BLOQUEIO" minOccurs="1">
+                                            <xs:annotation>
+                                                <xs:documentation>DATA/HORA BLOQUEIO DO PRODUTO NO SISTEMA LEGADO DD/MM/YYYY HH:MM:SS</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:whiteSpace value="preserve"/>
+                                                    <xs:minLength value="1"/>
+                                                    <xs:maxLength value="19"/>
+                                                    <xs:pattern value="[0-9][0-9][/][0-9][0-9][/][0-9][0-9][0-9][0-9][ ][0-9][0-9][:][0-9][0-9][:][0-9][0-9]"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                      
+										                    <xs:element name="CODIGO_MOTIVO" minOccurs="1">
+											                    <xs:annotation>
+												                    <xs:documentation>CÓDIGO CRITICIDADE PARA O MOTIVO DO BLOQUEIO</xs:documentation>
+											                    </xs:annotation>
+											                    <xs:simpleType>
+												                    <xs:restriction base="xs:string">
+                                              <xs:whiteSpace value="preserve"/>
+                                              <xs:minLength value="1"/>
+                                              <xs:maxLength value="10"/>
+												                    </xs:restriction>
+											                    </xs:simpleType>
+										                    </xs:element>
+                                      
+                                        <xs:element name="SOLICITANTE_BLOQUEIO" minOccurs="1">
+                                            <xs:annotation>
+                                                <xs:documentation>SOLICITANTE DO BLOQUEIO DO PALLET</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:whiteSpace value="preserve"/>
+                                                    <xs:minLength value="1"/>
+                                                    <xs:maxLength value="100"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>  
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>                    
+                        </xs:sequence>
+                        <xs:attribute name="NUM_LAUDO_BLOQUEIO" type="xs:string" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

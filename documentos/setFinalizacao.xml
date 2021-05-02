@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:wcf="http://schemas.datacontract.org/2004/07/wcfIntegracaoWMS">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:SetFinalizacao>
+         <!--Optional:-->
+         <tem:_data>
+            <!--Optional:-->
+            <wcf:COD_BLOQUEIO_WEB>208749</wcf:COD_BLOQUEIO_WEB>
+            <!--Optional:-->
+            <wcf:COD_DESTINACAO>13</wcf:COD_DESTINACAO>
+            <!--Optional:-->
+            <wcf:COD_LOCAL_BLOQUEIO>158</wcf:COD_LOCAL_BLOQUEIO>
+            <!--Optional:-->
+            <wcf:OBSERVACAO>observação da finalização</wcf:OBSERVACAO>
+         </tem:_data>
+      </tem:SetFinalizacao>
+   </soapenv:Body>
+</soapenv:Envelope>
