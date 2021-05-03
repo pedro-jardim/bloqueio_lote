@@ -57,7 +57,7 @@ object frmBloqueioLote: TfrmBloqueioLote
       Top = 46
       Width = 565
       Height = 462
-      ActivePage = tabEnvio
+      ActivePage = tabDados
       Align = alClient
       TabOrder = 1
       object tabDados: TTabSheet
@@ -265,9 +265,9 @@ object frmBloqueioLote: TfrmBloqueioLote
             TabOrder = 1
             object GroupBox3: TGroupBox
               Left = 7
-              Top = 101
+              Top = 95
               Width = 529
-              Height = 137
+              Height = 143
               Align = alClient
               Caption = 'Itens'
               Padding.Left = 5
@@ -279,7 +279,7 @@ object frmBloqueioLote: TfrmBloqueioLote
                 Left = 7
                 Top = 20
                 Width = 515
-                Height = 110
+                Height = 116
                 Align = alClient
                 DataSource = dsBloqueio
                 TabOrder = 0
@@ -294,7 +294,7 @@ object frmBloqueioLote: TfrmBloqueioLote
               Left = 7
               Top = 20
               Width = 529
-              Height = 81
+              Height = 75
               Align = alTop
               BevelOuter = bvNone
               Font.Charset = DEFAULT_CHARSET
@@ -318,11 +318,37 @@ object frmBloqueioLote: TfrmBloqueioLote
                 ParentFont = False
               end
               object Label9: TLabel
-                Left = 6
-                Top = 27
+                Left = 278
+                Top = 3
                 Width = 92
                 Height = 13
                 Caption = 'Centro de Destinos'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label10: TLabel
+                Left = 50
+                Top = 53
+                Width = 47
+                Height = 13
+                Caption = 'Opera'#231#227'o'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+              end
+              object Label11: TLabel
+                Left = 284
+                Top = 53
+                Width = 87
+                Height = 13
+                Caption = 'Laudo do Bloqueio'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -344,12 +370,38 @@ object frmBloqueioLote: TfrmBloqueioLote
                 TabOrder = 0
               end
               object ListBox1: TListBox
-                Left = 104
-                Top = 24
+                Left = 376
+                Top = 0
                 Width = 150
                 Height = 48
                 ItemHeight = 13
                 TabOrder = 1
+              end
+              object edtOperacao: TEdit
+                Left = 104
+                Top = 50
+                Width = 150
+                Height = 21
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 2
+              end
+              object edtLaudo: TEdit
+                Left = 376
+                Top = 50
+                Width = 150
+                Height = 21
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                TabOrder = 3
               end
             end
           end
@@ -371,6 +423,10 @@ object frmBloqueioLote: TfrmBloqueioLote
       end
       object tabArquivo: TTabSheet
         Caption = 'Arquivo'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object memoArquivo: TMemo
           Left = 0
           Top = 0
@@ -383,6 +439,10 @@ object frmBloqueioLote: TfrmBloqueioLote
       object tabEnvio: TTabSheet
         Caption = 'tabEnvio'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object ScrollBox3: TScrollBox
           Left = 0
           Top = 0

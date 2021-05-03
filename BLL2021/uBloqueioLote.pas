@@ -55,6 +55,10 @@ type
     GroupBox4: TGroupBox;
     btnEnvioXML: TButton;
     Memo1: TMemo;
+    Label10: TLabel;
+    edtOperacao: TEdit;
+    Label11: TLabel;
+    edtLaudo: TEdit;
     procedure btnAbrirXMLClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnEnvioXMLClick(Sender: TObject);
@@ -154,7 +158,7 @@ begin
   edtCNPJRequisitante.Text := lNodeIdentificacao.ChildNodes['CNPJ_REQUISITANTE'].Text;
   edtDestino.Text          := lNodeIdentificacao.ChildNodes['DESTINO'].Text;
   edtCNPJDestino.Text      := lNodeIdentificacao.ChildNodes['CNPJ_DESTINO'].Text;
-  edtCNPJDestino.Text      := lNodeIdentificacao.ChildNodes['XSDVALIDACAO'].Text;
+  edtXSDValidacao.Text     := lNodeIdentificacao.ChildNodes['XSDVALIDACAO'].Text;
 
   //-->> Guarda o node da Inspeção
   lNodeInspecao := XMLDocument.DocumentElement.ChildNodes['DADOSXML'].ChildNodes['INSPECAO'];
@@ -162,6 +166,8 @@ begin
 
   //-->> Guarda o node de Itens
   lNodeItens := lNodeInspecao.ChildNodes['ITENS'];
+  edtOperacao.Text := lNodeItens.Attributes['IDENT_OPER'];
+  edtLaudo.Text := lNodeItens.Attributes['NUM_LAUDO_BLOQUEIO'];
   memTeste.Lines.Text := lNodeItens.XML;
 
   try

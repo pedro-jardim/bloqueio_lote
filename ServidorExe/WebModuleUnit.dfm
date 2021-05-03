@@ -1,5 +1,7 @@
 object WebModule1: TWebModule1
   OldCreateOrder = False
+  OnCreate = WebModuleCreate
+  OnDestroy = WebModuleDestroy
   Actions = <
     item
       Default = True
@@ -27,5 +29,20 @@ object WebModule1: TWebModule1
     PublishOptions = [poUTF8ContentType]
     Left = 60
     Top = 123
+  end
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'Database=EGISSQL_GNSF'
+      'User_Name=sa'
+      'Password=sql@127'
+      'Server=186.202.42.2'
+      'DriverID=MSSQL')
+    LoginPrompt = False
+    Left = 184
+    Top = 32
+  end
+  object MSSQLDriverLink: TFDPhysMSSQLDriverLink
+    Left = 288
+    Top = 32
   end
 end

@@ -5,10 +5,8 @@ unit uServidorBLLImpl;
 interface
 
 uses
-  Soap.InvokeRegistry, System.Types, Soap.XSBuiltIns, uServidorBLLIntf, System.Classes;
-
-
-
+  Soap.InvokeRegistry, System.Types, Soap.XSBuiltIns, uServidorBLLIntf, System.Classes,
+  WebModuleUnit;
 type
 
   { TServidorBLL }
@@ -32,6 +30,7 @@ var
   lNodeListaProdutos, lNodeProduto, lNode: IXMLNode;
 begin
   lxml := NewXMLDocument;
+
   lxml.XML.Text := xml;
   lxml.Active := True;
   lxml.SaveToFile('C:\Pedro\Arquivo.xml');
@@ -47,9 +46,54 @@ begin
   Result := lxml.XML.Text;
 end;
 
-function TServidorBLL.envioLaudoLoteBloqueado(
-  const xml: WideString): WideString;
+function TServidorBLL.envioLaudoLoteBloqueado(const xml: WideString): WideString;
+var
+  lxml : IXMLDocument;
+  lNodeIdentificacao, lNodeInspecao, lNodeItens, lNodeItem : IXMLNode;
+  i, x : integer;
 begin
+
+  lxml := NewXMLDocument;
+  lxml.XML.Text := xml;
+  lxml.Active := True;
+
+  //-->> Guarda o node da Identificação
+  lNodeIdentificacao := lxml.DocumentElement.ChildNodes['IDENTIFICACAO'];
+
+  //memTeste.Lines.Text := lNodeIdentificacao.XML;
+  { Incluir no DataSet
+  edtIdentificador.Text    := lNodeIdentificacao.ChildNodes['IDENTIFICADOR'].Text;
+  edtRequisitante.Text     := lNodeIdentificacao.ChildNodes['REQUISITANTE'].Text;
+  edtCNPJRequisitante.Text := lNodeIdentificacao.ChildNodes['CNPJ_REQUISITANTE'].Text;
+  edtDestino.Text          := lNodeIdentificacao.ChildNodes['DESTINO'].Text;
+  edtCNPJDestino.Text      := lNodeIdentificacao.ChildNodes['CNPJ_DESTINO'].Text;
+  edtXSDValidacao.Text     := lNodeIdentificacao.ChildNodes['XSDVALIDACAO'].Text;
+  }
+
+  //-->> Guarda o node da Inspeção
+  lNodeInspecao := lxml.DocumentElement.ChildNodes['DADOSXML'].ChildNodes['INSPECAO'];
+
+  {Incuir no DataSet
+  edtCentroOrigem.Text := lNodeInspecao.ChildNodes['CENTRO_ORIGEM'].Text;
+  }
+
+  //-->> Guarda o node de Itens
+  lNodeItens := lNodeInspecao.ChildNodes['ITENS'];
+  {Incuir no DataSet
+  edtOperacao.Text := lNodeItens.Attributes['IDENT_OPER'];
+  edtLaudo.Text := lNodeItens.Attributes['NUM_LAUDO_BLOQUEIO'];
+  }
+
+  //-->> Itens
+  for i := 0 to lNodeItens.ChildNodes.Count - 1 do
+  begin
+    lNodeItem := lNodeItens.ChildNodes.Get(i);
+
+    { Incluir no DataSet
+    cdsBloqueio.FieldByName('DESCRICAO').AsString := lNodeItem.ChildNodes[i].Text;
+    }
+  end;
+
 
 end;
 

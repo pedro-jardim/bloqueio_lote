@@ -1,1 +1,52 @@
-Projeto - Bloqueio de Lote
+-->> Bloqueio de Lote
+
+-->> Tabela de Entrada de Dados
+
+--tabela => ws_bloqueio_lote
+cd_bloqueio_lote int
+dt_bloqueio_lote datetime
+hr_bloqueio_lote varchar(5)
+nm_identificador varchar(18)
+cd_requisitante integer
+nm_cnpj_requisitante varchar(18)
+cd_destino integer
+nm_cnpj_destino varchar(18)
+nm_xsd_validacao varchar(100)
+cd_centro_origem integer
+nm_ident_oper varchar(3)
+num_laudo_bloqueio varchar(50)
+nm_arquivo_xml text
+cd_usuario_inclusao int
+dt_usuario_inclusao datetime
+cd_usuario int
+dt_usuario datetime
+
+--tabela => ws_bloqueio_lote_centro_destino
+cd_bloqueio_lote int
+cd_centro_destino int
+cd_usuario_inclusao int
+dt_usuario_inclusao datetime
+cd_usuario int 
+dt_usuario datetime
+
+--tabela => ws_bloqueio_lote_itens
+cd_cloqueio_lote int 
+cd_item_bloqueio_lote int 
+cd_bloqueio_web int
+nm_sku varchar(30)
+nm_descricao varchar(100)
+nm_categoria varchar(10)
+nm_divisao varchar(10)
+dt_fabricacao datetime
+dt_vencimento datetime
+qt_caixas int
+qt_produtos int
+nm_cod_lpn varchar(60)
+dt_bloqueio datetime
+nm_codigo_motivo varchar(10)
+nm_descricao_motivo varchar(100)
+nm_solicitante_motivo varchar(100)
+cd_usuario_inclusao int
+dt_usuario_inclusao datetime
+cd_usuario int
+dt_usuario datetime
