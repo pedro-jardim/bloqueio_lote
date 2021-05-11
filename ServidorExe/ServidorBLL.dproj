@@ -100,6 +100,11 @@
         </DCCReference>
         <DCCReference Include="uServidorBLLImpl.pas"/>
         <DCCReference Include="uServidorBLLIntf.pas"/>
+        <DCCReference Include="udmBloqueioLote.pas">
+            <Form>dmBloqueioLote</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TSoapDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

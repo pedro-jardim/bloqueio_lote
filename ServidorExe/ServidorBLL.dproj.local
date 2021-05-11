@@ -3,19 +3,22 @@
 	<Transactions>
     <Transaction>2021/04/23 22:25:43.000.234,=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
     <Transaction>2021/04/23 22:25:43.000.646,=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
-    <Transaction>2021/04/23 22:26:25.000.601,=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\uServidorBLLIntf.pas</Transaction>
     <Transaction>2021/04/23 22:26:25.000.548,=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\uServidorBLLImpl.pas</Transaction>
+    <Transaction>2021/04/23 22:26:25.000.601,=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\uServidorBLLIntf.pas</Transaction>
     <Transaction>2021/04/23 22:26:48.000.898,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\ServidorExe\uServidorBLLIntf.pas=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\uServidorBLLIntf.pas</Transaction>
     <Transaction>2021/04/23 22:26:53.000.129,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\ServidorExe\uServidorBLLImpl.pas=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\uServidorBLLImpl.pas</Transaction>
     <Transaction>2021/04/23 22:27:05.000.992,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\ServidorExe\uServidor.dfm=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\FormUnit1.dfm</Transaction>
     <Transaction>2021/04/23 22:27:05.000.992,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\ServidorExe\uServidor.pas=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
-    <Transaction>2021/04/23 22:27:13.000.413,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\ServidorExe\WebModuleUnit.dfm=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.dfm</Transaction>
     <Transaction>2021/04/23 22:27:13.000.413,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\ServidorExe\WebModuleUnit.pas=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2021/04/23 22:27:13.000.413,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\ServidorExe\WebModuleUnit.dfm=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.dfm</Transaction>
     <Transaction>2021/04/23 22:27:36.000.376,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\ServidorExe\ServidorBLL.dproj=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
     <Transaction>2021/04/23 22:33:25.000.935,=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\ServidorExe\IServidorBLL1.pas</Transaction>
     <Transaction>2021/04/23 22:33:53.000.120,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\IServidorBLL.pas=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\ServidorExe\IServidorBLL1.pas</Transaction>
     <Transaction>2021/04/23 22:37:17.000.725,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\uIServidorBLL.pas=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\IServidorBLL.pas</Transaction>
     <Transaction>2021/04/23 22:38:53.000.777,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\uIServidorBLL.pas=</Transaction>
+    <Transaction>2021/05/04 10:08:01.000.856,=C:\GBS-2021\BLL2021\ServidorExe\Unit1.pas</Transaction>
+    <Transaction>2021/05/04 10:09:26.000.248,C:\GBS-2021\BLL2021\ServidorExe\udmBloqueioLote.pas=C:\GBS-2021\BLL2021\ServidorExe\Unit1.pas</Transaction>
+    <Transaction>2021/05/04 10:09:26.000.248,C:\GBS-2021\BLL2021\ServidorExe\udmBloqueioLote.dfm=C:\GBS-2021\BLL2021\ServidorExe\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="uServidor.pas"/>
@@ -24,5 +27,7 @@
     <File Path="uServidorBLLIntf.pas"/>
     <File Path="WebModuleUnit.pas"/>
     <File Path="WebModuleUnit.dfm"/>
+    <File Path="udmBloqueioLote.pas"/>
+    <File Path="udmBloqueioLote.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

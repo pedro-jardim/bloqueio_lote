@@ -1,0 +1,62 @@
+object WebModule1: TWebModule1
+  OldCreateOrder = False
+  OnCreate = WebModuleCreate
+  OnDestroy = WebModuleDestroy
+  Actions = <
+    item
+      Default = True
+      Name = 'DefaultHandler'
+      PathInfo = '/'
+      OnAction = WebModule1DefaultHandlerAction
+    end>
+  Height = 230
+  Width = 415
+  object HTTPSoapDispatcher1: THTTPSoapDispatcher
+    Dispatcher = HTTPSoapPascalInvoker1
+    WebDispatch.PathInfo = 'soap*'
+    Left = 60
+    Top = 11
+  end
+  object HTTPSoapPascalInvoker1: THTTPSoapPascalInvoker
+    Converter.Options = [soSendMultiRefObj, soTryAllSchema, soUTF8InHeader]
+    Left = 60
+    Top = 67
+  end
+  object WSDLHTMLPublish1: TWSDLHTMLPublish
+    WebDispatch.MethodType = mtAny
+    WebDispatch.PathInfo = 'wsdl*'
+    PublishOptions = [poUTF8ContentType]
+    Left = 60
+    Top = 123
+  end
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'Database=EGISSQL_GNSF'
+      'User_Name=sa'
+      'Password=sql@127'
+      'Server=186.202.42.2'
+      'DriverID=MSSQL')
+    LoginPrompt = False
+    Left = 184
+    Top = 32
+  end
+  object MSSQLDriverLink: TFDPhysMSSQLDriverLink
+    Left = 288
+    Top = 32
+  end
+  object qryTeste: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'insert into pedro'
+      'values'
+      '(1, :nm_arquivo)')
+    Left = 216
+    Top = 128
+    ParamData = <
+      item
+        Name = 'NM_ARQUIVO'
+        DataType = ftMemo
+        ParamType = ptInput
+      end>
+  end
+end

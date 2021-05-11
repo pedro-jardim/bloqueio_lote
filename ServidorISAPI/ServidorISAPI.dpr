@@ -8,7 +8,8 @@ uses
   Web.Win.ISAPIThreadPool,
   uServidorBLLImpl in '..\ServidorExe\uServidorBLLImpl.pas',
   uServidorBLLIntf in '..\ServidorExe\uServidorBLLIntf.pas',
-  WebModuleUnit in '..\ServidorExe\WebModuleUnit.pas' {WebModule1: TWebModule};
+  WebModuleUnit in '..\ServidorExe\WebModuleUnit.pas' {WebModule1: TWebModule},
+  udmBloqueioLote in '..\ServidorExe\udmBloqueioLote.pas' {dmBloqueioLote: TSoapDataModule};
 
 {$R *.res}
 

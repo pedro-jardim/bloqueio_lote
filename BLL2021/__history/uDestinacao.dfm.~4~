@@ -1,0 +1,184 @@
+object frmDestinacao: TfrmDestinacao
+  Left = 0
+  Top = 0
+  Caption = 'Destina'#231#227'o'
+  ClientHeight = 525
+  ClientWidth = 472
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label3: TLabel
+    Left = 31
+    Top = 83
+    Width = 50
+    Height = 13
+    Caption = 'C'#243'd. A'#231#227'o'
+  end
+  object ScrollBox1: TScrollBox
+    Left = 0
+    Top = 0
+    Width = 472
+    Height = 525
+    Align = alClient
+    Padding.Left = 5
+    Padding.Top = 5
+    Padding.Right = 5
+    Padding.Bottom = 5
+    TabOrder = 0
+    object Button2: TButton
+      Left = 8
+      Top = 280
+      Width = 452
+      Height = 43
+      Caption = 'Confirma'#231#227'o do Bloqueio de Lote'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+    end
+    object Button3: TButton
+      Left = 8
+      Top = 328
+      Width = 452
+      Height = 43
+      Caption = 'Confirma'#231#227'o do Bloqueio de Lote'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+    end
+    object memoRetorno: TMemo
+      Left = 5
+      Top = 372
+      Width = 458
+      Height = 144
+      Align = alBottom
+      TabOrder = 2
+      ExplicitTop = 312
+    end
+    object GroupBox1: TGroupBox
+      Left = 5
+      Top = 5
+      Width = 458
+      Height = 156
+      Align = alTop
+      Caption = 'Bloqueio do Lote'
+      TabOrder = 3
+      object Label1: TLabel
+        Left = 24
+        Top = 28
+        Width = 50
+        Height = 13
+        Caption = 'C'#243'd. A'#231#227'o'
+      end
+      object Label2: TLabel
+        Left = 24
+        Top = 52
+        Width = 91
+        Height = 13
+        Caption = 'C'#243'd. Bloqueio Web'
+      end
+      object Label4: TLabel
+        Left = 24
+        Top = 76
+        Width = 50
+        Height = 13
+        Caption = 'C'#243'd. A'#231#227'o'
+      end
+      object Label5: TLabel
+        Left = 248
+        Top = 28
+        Width = 50
+        Height = 13
+        Caption = 'C'#243'd. A'#231#227'o'
+      end
+      object Label6: TLabel
+        Left = 248
+        Top = 52
+        Width = 50
+        Height = 13
+        Caption = 'C'#243'd. A'#231#227'o'
+      end
+      object Label7: TLabel
+        Left = 248
+        Top = 76
+        Width = 50
+        Height = 13
+        Caption = 'C'#243'd. A'#231#227'o'
+      end
+      object Button1: TButton
+        Left = 2
+        Top = 111
+        Width = 454
+        Height = 43
+        Align = alBottom
+        Caption = 'Confirma'#231#227'o do Bloqueio de Lote'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 0
+        OnClick = Button1Click
+        ExplicitLeft = 6
+        ExplicitTop = 8
+        ExplicitWidth = 452
+      end
+      object edtCodAcaoBL: TEdit
+        Left = 120
+        Top = 25
+        Width = 121
+        Height = 21
+        TabOrder = 1
+      end
+      object Edit1: TEdit
+        Left = 120
+        Top = 49
+        Width = 121
+        Height = 21
+        TabOrder = 2
+      end
+      object Edit3: TEdit
+        Left = 312
+        Top = 25
+        Width = 121
+        Height = 21
+        TabOrder = 3
+      end
+      object Edit4: TEdit
+        Left = 312
+        Top = 49
+        Width = 121
+        Height = 21
+        TabOrder = 4
+      end
+      object Edit5: TEdit
+        Left = 312
+        Top = 73
+        Width = 121
+        Height = 21
+        TabOrder = 5
+      end
+      object Edit2: TEdit
+        Left = 119
+        Top = 73
+        Width = 121
+        Height = 21
+        TabOrder = 6
+      end
+    end
+  end
+end

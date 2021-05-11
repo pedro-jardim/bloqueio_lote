@@ -4,6 +4,7 @@ interface
 
 uses
   uIServidorBLL,
+  uIServidorBLLProd,
   uBloqueioLote,
   uDestinacao,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, System.UITypes,
@@ -70,9 +71,15 @@ end;
 procedure TfrmPrincipal.Button1Click(Sender: TObject);
 var
   Servidor : IServidorBLL;
+  ServidorProd : IServidorBLLProd;
 begin
+  {
   Servidor := uIServidorBll.GetIServidorBLL;
   ShowMessage( Servidor.mensagemBoasVindas );
+  }
+  ServidorProd := uIServidorBLLProd.GetIServidorBLL;
+  Showmessage( ServidorProd.mensagemBoasVindas );
+
 end;
 
 end.

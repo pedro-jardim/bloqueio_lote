@@ -4,10 +4,13 @@ interface
 
 uses
   uIServidorBLL,
+  uIServidorBLLProd,
+  uServiceIntegracaoWMS,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Xml.xmldom, Xml.XMLIntf, Xml.XMLDoc,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Data.DB, Datasnap.DBClient,
-  Vcl.Grids, Vcl.DBGrids;
+  Vcl.Grids, Vcl.DBGrids, Soap.InvokeRegistry, System.Net.URLClient, Soap.Rio,
+  Soap.SOAPHTTPClient;
 
 type
   TfrmBloqueioLote = class(TForm)
@@ -59,6 +62,7 @@ type
     edtOperacao: TEdit;
     Label11: TLabel;
     edtLaudo: TEdit;
+    HTTPRIOdmBloqueioLote: THTTPRIO;
     procedure btnAbrirXMLClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnEnvioXMLClick(Sender: TObject);
@@ -74,6 +78,9 @@ var
   frmBloqueioLote: TfrmBloqueioLote;
 
 implementation
+
+uses
+  uIdmBloqueioLote;
 
 {$R *.dfm}
 
@@ -134,10 +141,18 @@ end;
 procedure TfrmBloqueioLote.btnEnvioXMLClick(Sender: TObject);
 var
   Servidor : IServidorBLL;
+  ServidorProd : IServidorBLLProd;
+  ServidorBLL : IdmBloqueioLote;
   lxml : WideString;
 begin
+  {
   Servidor := uIServidorBll.GetIServidorBLL;
-  Memo1.Lines.Text := Servidor.envioEncerramentoLote(XMLDocument.XML.Text);
+  Memo1.Lines.Text := Servidor.envioLaudoLoteBloqueado(XMLDocument.XML.Text);
+
+  ServidorProd := uIServidorBLLProd.GetIServidorBLL;
+  Memo1.Lines.Text := ServidorProd.envioLaudoLoteBloqueado(XMLDocument.XML.Text);
+  }
+  Memo1.Lines.Text := (HTTPRIOdmBloqueioLote as IdmBloqueioLote).envioLaudoXML(XMLDocument.XML.Text);
 
 end;
 

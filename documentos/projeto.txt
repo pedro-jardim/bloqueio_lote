@@ -1,6 +1,4 @@
--->> Bloqueio de Lote
-
--->> Tabela de Entrada de Dados
+-->> Modelagem de Dados do Bloqueio de Lote
 
 --tabela => ws_bloqueio_lote
 cd_bloqueio_lote int
@@ -14,8 +12,8 @@ nm_cnpj_destino varchar(18)
 nm_xsd_validacao varchar(100)
 cd_centro_origem integer
 nm_ident_oper varchar(3)
-num_laudo_bloqueio varchar(50)
-nm_arquivo_xml text
+nm_laudo_bloqueio varchar(50)
+ds_arquivo_xml text
 cd_usuario_inclusao int
 dt_usuario_inclusao datetime
 cd_usuario int
@@ -39,8 +37,8 @@ nm_categoria varchar(10)
 nm_divisao varchar(10)
 dt_fabricacao datetime
 dt_vencimento datetime
-qt_caixas int
-qt_produtos int
+qt_caixa int
+qt_produto int
 nm_cod_lpn varchar(60)
 dt_bloqueio datetime
 nm_codigo_motivo varchar(10)
@@ -50,3 +48,25 @@ cd_usuario_inclusao int
 dt_usuario_inclusao datetime
 cd_usuario int
 dt_usuario datetime
+
+-->> Teste dos metodos do webservice via extensão do navegador
+wizdler
+
+-->> Dicas
+* Após o Laudo encerrado, pode ser reenviado outro laudo(add) com a mesma LPN.
+Nesse caso, sempre considerar para bloqueio a ultima.
+
+* O laudo pode ser encerrado sem o lançamento de uma destinação.
+
+* O serviço deles esta duplicando o envio (tratar do nosso lado essa inconsistencia)
+----------------------------------------------------------------------
+
+-->> Retornos 
+* SetBloqueio
+<retorno><id>428612</id><Sucesso>S</Sucesso><mensagem>BLOQUEIO DA LPN: 00100000000000000010 REALIZADO COM SUCESSO.</mensagem></retorno>
+
+* SetDestinacao
+<retorno><id>462890</id><Sucesso>S</Sucesso><mensagem>A INFORMAÇÃO DE DESTINAÇÃO DA LPN: 00100000000000000010 FOI RECEBIDA COM SUCESSO.</mensagem></retorno>
+
+* SetFinalizacao
+<retorno><id>462891</id><Sucesso>S</Sucesso><mensagem>A INFORMAÇÃO DE FINALIZAÇÃO DA LPN: 00100000000000000010 FOI RECEBIDA COM SUCESSO.</mensagem></retorno>

@@ -8,7 +8,8 @@ uses
   uServidor in 'uServidor.pas' {Form1},
   WebModuleUnit in 'WebModuleUnit.pas' {WebModule1: TWebModule},
   uServidorBLLImpl in 'uServidorBLLImpl.pas',
-  uServidorBLLIntf in 'uServidorBLLIntf.pas';
+  uServidorBLLIntf in 'uServidorBLLIntf.pas',
+  udmBloqueioLote in 'udmBloqueioLote.pas' {dmBloqueioLote: TSoapDataModule};
 
 {$R *.res}
 
