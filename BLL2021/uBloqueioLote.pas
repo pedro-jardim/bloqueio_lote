@@ -185,6 +185,7 @@ begin
   edtLaudo.Text := lNodeItens.Attributes['NUM_LAUDO_BLOQUEIO'];
   memTeste.Lines.Text := lNodeItens.XML;
 
+  {
   try
     if cdsBloqueio.Active then
       cdsBloqueio.Close;
@@ -193,14 +194,14 @@ begin
     for i := 0 to lNodeItens.ChildNodes.Count - 1 do
     begin
       lNodeItem := lNodeItens.ChildNodes.Get(i);
-      cdsBloqueio.Insert;
-      cdsBloqueio.FieldByName('DESCRICAO').AsString := lNodeItem.ChildNodes[i].Text;
+
+      cdsBloqueio.FieldByName('DESCRICAO').AsString := lNodeItem.ChildNodes['COD_BLOQUEIO_WEB'].Text;
       cdsBloqueio.Post;
     end;
   finally
 
   end;
-
+  }
 
 {
   for i := 0 to XMLDocument.DocumentElement.ChildNodes.Count - 1 do

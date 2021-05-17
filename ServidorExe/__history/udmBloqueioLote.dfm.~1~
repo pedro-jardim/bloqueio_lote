@@ -1,5 +1,0 @@
-object dmBloqueioLote: TdmBloqueioLote
-  OldCreateOrder = False
-  Height = 283
-  Width = 385
-end
