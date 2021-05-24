@@ -7,6 +7,7 @@ uses
   uIServidorBLLProd,
   uBloqueioLote,
   uDestinacao,
+  uTestes,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, System.UITypes,
   Vcl.Graphics,  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ComCtrls, Vcl.StdCtrls;
 
@@ -18,10 +19,12 @@ type
     btnEncerramento: TButton;
     btnSair: TButton;
     Button1: TButton;
+    btnTestes: TButton;
     procedure btnSairClick(Sender: TObject);
     procedure btnBloqueioLoteClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure btnDestinacaoClick(Sender: TObject);
+    procedure btnTestesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,7 +68,6 @@ begin
   begin
     Close;
   end;
-
 end;
 
 procedure TfrmPrincipal.Button1Click(Sender: TObject);
@@ -80,6 +82,18 @@ begin
   ServidorProd := uIServidorBLLProd.GetIServidorBLL;
   Showmessage( ServidorProd.mensagemBoasVindas );
 
+end;
+
+procedure TfrmPrincipal.btnTestesClick(Sender: TObject);
+begin
+  with TfrmTestes.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
 end;
 
 end.

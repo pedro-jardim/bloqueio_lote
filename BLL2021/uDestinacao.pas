@@ -5,7 +5,8 @@ interface
 uses
   uServiceIntegracaoWMS,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Soap.InvokeRegistry,
+  System.Net.URLClient, Soap.Rio, Soap.SOAPHTTPClient;
 
 type
   TfrmDestinacao = class(TForm)
@@ -46,9 +47,12 @@ type
     edtObsEnc: TEdit;
     edtCodDestinacaoEnc: TEdit;
     edtLocalBloqueioEnc: TEdit;
+    HTTPRIO1: THTTPRIO;
     procedure btnSetBloqueioLoteClick(Sender: TObject);
     procedure btnSetDestinacaoClick(Sender: TObject);
     procedure btnSetFinalizacaoClick(Sender: TObject);
+    procedure HTTPRIO1BeforeExecute(const MethodName: string;
+      SOAPRequest: TStream);
   private
     { Private declarations }
   public
@@ -101,7 +105,7 @@ begin
     Data.OBSERVACAO         := edtObsDes.Text;
     Data.COD_DESTINACAO     := edtCodDestinacaoDes.Text;
     try
-      Servidor := uServiceIntegracaoWMS.GetIintegracaoWMS;
+      Servidor               := uServiceIntegracaoWMS.GetIintegracaoWMS(false,'',HTTPRIO1);
       memoRetorno.Lines.Text := Servidor.SetDestinacao(Data);
     except
       on e:exception do
@@ -137,6 +141,14 @@ begin
   finally
 
   end;
+
+end;
+
+procedure TfrmDestinacao.HTTPRIO1BeforeExecute(const MethodName: string;
+  SOAPRequest: TStream);
+begin
+
+  memoRetorno.Lines.Text := SOAPRequest.ToString;
 
 end;
 

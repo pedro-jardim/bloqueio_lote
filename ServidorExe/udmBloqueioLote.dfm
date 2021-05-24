@@ -52,7 +52,6 @@ object dmBloqueioLote: TdmBloqueioLote
         Name = '@cd_parametro'
         DataType = ftInteger
         ParamType = ptInput
-        Value = '1'
       end
       item
         Position = 3
@@ -65,6 +64,13 @@ object dmBloqueioLote: TdmBloqueioLote
         Name = '@cd_bloqueio_lote'
         DataType = ftInteger
         ParamType = ptInput
+      end
+      item
+        Position = 5
+        Name = '@dt_bloqueio_lote'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
       end
       item
         Position = 6
@@ -186,6 +192,20 @@ object dmBloqueioLote: TdmBloqueioLote
         Size = 10
       end
       item
+        Position = 24
+        Name = '@dt_fabricacao'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
+      end
+      item
+        Position = 25
+        Name = '@dt_vencimento'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
+      end
+      item
         Position = 26
         Name = '@qt_caixa'
         DataType = ftInteger
@@ -203,6 +223,13 @@ object dmBloqueioLote: TdmBloqueioLote
         DataType = ftString
         ParamType = ptInput
         Size = 60
+      end
+      item
+        Position = 29
+        Name = '@dt_bloqueio'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
       end
       item
         Position = 30
@@ -242,6 +269,7 @@ object dmBloqueioLote: TdmBloqueioLote
         Name = '@RETURN_VALUE'
         DataType = ftInteger
         ParamType = ptResult
+        Value = 0
       end
       item
         Position = 2
@@ -260,6 +288,13 @@ object dmBloqueioLote: TdmBloqueioLote
         Name = '@cd_bloqueio_lote'
         DataType = ftInteger
         ParamType = ptInput
+      end
+      item
+        Position = 5
+        Name = '@dt_bloqueio_lote'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
       end
       item
         Position = 6
@@ -381,6 +416,20 @@ object dmBloqueioLote: TdmBloqueioLote
         Size = 10
       end
       item
+        Position = 24
+        Name = '@dt_fabricacao'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
+      end
+      item
+        Position = 25
+        Name = '@dt_vencimento'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
+      end
+      item
         Position = 26
         Name = '@qt_caixa'
         DataType = ftInteger
@@ -398,6 +447,13 @@ object dmBloqueioLote: TdmBloqueioLote
         DataType = ftString
         ParamType = ptInput
         Size = 60
+      end
+      item
+        Position = 29
+        Name = '@dt_bloqueio'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
       end
       item
         Position = 30

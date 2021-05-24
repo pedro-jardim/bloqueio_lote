@@ -100,9 +100,9 @@ begin
 
         //-->> Guarda o node da Identificação
         lNodeIdentificacao := lxml.DocumentElement.ChildNodes['IDENTIFICACAO'];
-        ParamByName('@cd_parametro').AsInteger      := 1;
-        ParamByName('@cd_bloqueio_lote').AsInteger  := 0;
-        //ParamByName('@dt_bloqueio_lote').AsDateTime := Now;
+        ParamByName('@cd_parametro').AsInteger       := 1;
+        ParamByName('@cd_bloqueio_lote').AsInteger   := 0;
+        ParamByName('@dt_bloqueio_lote').AsString    := '';
         ParamByName('@hr_bloqueio_lote').AsString    := '';
         ParamByName('@nm_identificador').AsString    := lNodeIdentificacao.ChildNodes['IDENTIFICADOR'].Text;
         if lNodeIdentificacao.ChildNodes['REQUISITANTE'].Text <> '' then
@@ -151,25 +151,24 @@ begin
           ParamByName('@cd_bloqueio_lote').AsInteger      := cd_bloqueio;
           ParamByName('@cd_item_bloqueio_lote').AsInteger := 0;
           ParamByName('@nm_ident_oper').AsString          := nm_oper;
-          if lNodeItem.ChildNodes['COD_BLOQUEIO'].Text <> '' then
-            ParamByName('@cd_bloqueio_web').AsInteger     := StrToIntDef(lNodeItem.ChildNodes['COD_BLOQUEIO'].Text,0);
+          if lNodeItem.ChildNodes['COD_BLOQUEIO_WEB'].Text <> '' then
+            ParamByName('@cd_bloqueio_web').AsInteger     := StrToIntDef(lNodeItem.ChildNodes['COD_BLOQUEIO_WEB'].Text,0);
           ParamByName('@nm_sku').AsString                 := lNodeItem.ChildNodes['SKU'].Text;
           ParamByName('@nm_descricao').AsString           := lNodeItem.ChildNodes['DESCRICAO'].Text;
           ParamByName('@nm_categoria').AsString           := lNodeItem.ChildNodes['CATEGORIA'].Text;
           ParamByName('@nm_divisao').AsString             := lNodeItem.ChildNodes['DIVISAO'].Text;
-          //ParamByName('@dt_fabricacao').AsDateTime        := StrToDate(lNodeItem.ChildNodes['DH_FABRICACAO'].Text);
-          //ParamByName('@dt_vencimento').AsDateTime        := StrToDate(lNodeItem.ChildNodes['DH_VENCIMENTO'].Text);
+          ParamByName('@dt_fabricacao').AsString          := lNodeItem.ChildNodes['DH_FABRICACAO'].Text;
+          ParamByName('@dt_vencimento').AsString          := lNodeItem.ChildNodes['DH_VENCIMENTO'].Text;
           if lNodeItem.ChildNodes['QTD_CAIXAS'].Text <> '' then
             ParamByName('@qt_caixa').AsInteger            := StrToIntDef(lNodeItem.ChildNodes['QTD_CAIXAS'].Text,0);
           if lNodeItem.ChildNodes['QTD_PRODUTOS'].Text <> '' then
             ParamByName('@qt_produto').AsInteger          := StrToIntDef(lNodeItem.ChildNodes['QTD_PRODUTOS'].Text,0);
           ParamByName('@nm_cod_lpn').AsString             := lNodeItem.ChildNodes['COD_LPN'].Text;
-          //ParamByName('@dt_bloqueio').AsDateTime          := StrToDate(lNodeItem.ChildNodes['DH_BLOQUEIO'].Text);
+          ParamByName('@dt_bloqueio').AsString            := lNodeItem.ChildNodes['DH_BLOQUEIO'].Text;
           ParamByName('@nm_codigo_motivo').AsString       := lNodeItem.ChildNodes['CODIGO_MOTIVO'].Text;
           ParamByName('@nm_descricao_motivo').AsString    := lNodeItem.ChildNodes['DESCRICAO_MOTIVO'].Text;
-          ParamByName('@nm_solicitante_motivo').AsString   := lNodeItem.ChildNodes['SOLICITANTE_BLOQUEIO'].Text;
+          ParamByName('@nm_solicitante_motivo').AsString  := lNodeItem.ChildNodes['SOLICITANTE_BLOQUEIO'].Text;
           ExecProc;
-
         end;
 
       end;

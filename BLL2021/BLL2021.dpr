@@ -11,7 +11,8 @@ uses
   uServiceIntegracaoWMS in 'uServiceIntegracaoWMS.pas',
   uDestinacao in 'uDestinacao.pas' {frmDestinacao},
   uIServidorBLLProd in 'uIServidorBLLProd.pas',
-  uIdmBloqueioLote in 'uIdmBloqueioLote.pas';
+  uIdmBloqueioLote in 'uIdmBloqueioLote.pas',
+  uTestes in 'uTestes.pas' {frmTestes};
 
 {$R *.res}
 
@@ -24,5 +25,6 @@ begin
   Application.CreateForm(TfrmBloqueioLote, frmBloqueioLote);
   Application.CreateForm(TdmBloqueio, dmBloqueio);
   Application.CreateForm(TfrmDestinacao, frmDestinacao);
+  Application.CreateForm(TfrmTestes, frmTestes);
   Application.Run;
 end.

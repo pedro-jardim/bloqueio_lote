@@ -62,13 +62,23 @@ object frmPrincipal: TfrmPrincipal
     end
     object Button1: TButton
       Left = 16
-      Top = 160
+      Top = 208
       Width = 289
       Height = 41
       Caption = 'Teste do Servidor'
       TabOrder = 4
       TabStop = False
       OnClick = Button1Click
+    end
+    object btnTestes: TButton
+      Left = 16
+      Top = 160
+      Width = 289
+      Height = 41
+      Caption = 'Testes Gerais'
+      TabOrder = 5
+      TabStop = False
+      OnClick = btnTestesClick
     end
   end
 end
