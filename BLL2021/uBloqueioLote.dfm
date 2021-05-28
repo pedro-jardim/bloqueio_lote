@@ -433,7 +433,7 @@ object frmBloqueioLote: TfrmBloqueioLote
         end
       end
       object tabEnvio: TTabSheet
-        Caption = 'tabEnvio'
+        Caption = 'Envio'
         ImageIndex = 2
         object ScrollBox3: TScrollBox
           Left = 0

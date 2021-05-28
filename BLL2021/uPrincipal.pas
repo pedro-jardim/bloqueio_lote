@@ -7,7 +7,7 @@ uses
   uIServidorBLLProd,
   uBloqueioLote,
   uDestinacao,
-  uTestes,
+  uControleBloqueioLote,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, System.UITypes,
   Vcl.Graphics,  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ComCtrls, Vcl.StdCtrls;
 
@@ -18,13 +18,13 @@ type
     btnDestinacao: TButton;
     btnEncerramento: TButton;
     btnSair: TButton;
-    Button1: TButton;
-    btnTestes: TButton;
+    btnControleBloqueioLote: TButton;
+    btnTesteServidor: TButton;
     procedure btnSairClick(Sender: TObject);
     procedure btnBloqueioLoteClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure btnControleBloqueioLoteClick(Sender: TObject);
     procedure btnDestinacaoClick(Sender: TObject);
-    procedure btnTestesClick(Sender: TObject);
+    procedure btnTesteServidorClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,23 +70,9 @@ begin
   end;
 end;
 
-procedure TfrmPrincipal.Button1Click(Sender: TObject);
-var
-  Servidor : IServidorBLL;
-  ServidorProd : IServidorBLLProd;
+procedure TfrmPrincipal.btnControleBloqueioLoteClick(Sender: TObject);
 begin
-  {
-  Servidor := uIServidorBll.GetIServidorBLL;
-  ShowMessage( Servidor.mensagemBoasVindas );
-  }
-  ServidorProd := uIServidorBLLProd.GetIServidorBLL;
-  Showmessage( ServidorProd.mensagemBoasVindas );
-
-end;
-
-procedure TfrmPrincipal.btnTestesClick(Sender: TObject);
-begin
-  with TfrmTestes.Create(Self) do
+  with TfrmControleBloqueioLote.Create(Self) do
   begin
     try
       ShowModal;
@@ -94,6 +80,17 @@ begin
       Free;
     end;
   end;
+end;
+
+procedure TfrmPrincipal.btnTesteServidorClick(Sender: TObject);
+var
+  Servidor : IServidorBLL;
+  ServidorProd : IServidorBLLProd;
+begin
+
+  ServidorProd := uIServidorBLLProd.GetIServidorBLL;
+  Showmessage( ServidorProd.mensagemBoasVindas );
+
 end;
 
 end.

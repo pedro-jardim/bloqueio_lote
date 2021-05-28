@@ -12,7 +12,8 @@ uses
   uDestinacao in 'uDestinacao.pas' {frmDestinacao},
   uIServidorBLLProd in 'uIServidorBLLProd.pas',
   uIdmBloqueioLote in 'uIdmBloqueioLote.pas',
-  uTestes in 'uTestes.pas' {frmTestes};
+  uControleBloqueioLote in 'uControleBloqueioLote.pas' {frmControleBloqueioLote},
+  uIntegracaoUnilever in 'uIntegracaoUnilever.pas';
 
 {$R *.res}
 
@@ -21,10 +22,7 @@ begin
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Sapphire Kamri');
   Application.Title := 'BLL2021 - Bloqueio de Lote';
-  Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmBloqueioLote, frmBloqueioLote);
   Application.CreateForm(TdmBloqueio, dmBloqueio);
-  Application.CreateForm(TfrmDestinacao, frmDestinacao);
-  Application.CreateForm(TfrmTestes, frmTestes);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
 end.

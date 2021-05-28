@@ -203,38 +203,6 @@ begin
   end;
   }
 
-{
-  for i := 0 to XMLDocument.DocumentElement.ChildNodes.Count - 1 do
-  begin
-    //-->> Guarda o node da Identificação
-    if XMLDocument.DocumentElement.ChildNodes.Get(i).NodeName = 'IDENTIFICACAO' then
-    begin
-      lNodeIdentificacao := XMLDocument.DocumentElement.ChildNodes.Get(i);
-      //memTeste.Lines.Text := lNodeIdentificacao.XML;
-
-      edtIdentificador.Text    := lNodeIdentificacao.ChildNodes['IDENTIFICADOR'].Text;
-      edtRequisitante.Text     := lNodeIdentificacao.ChildNodes['REQUISITANTE'].Text;
-      edtCNPJRequisitante.Text := lNodeIdentificacao.ChildNodes['CNPJ_REQUISITANTE'].Text;
-      edtDestino.Text          := lNodeIdentificacao.ChildNodes['DESTINO'].Text;
-      edtCNPJDestino.Text      := lNodeIdentificacao.ChildNodes['CNPJ_DESTINO'].Text;
-      edtCNPJDestino.Text      := lNodeIdentificacao.ChildNodes['XSDVALIDACAO'].Text;
-    end;
-
-    if XMLDocument.DocumentElement.ChildNodes.Get(i).NodeName = 'DADOSXML' then
-    begin
-      //-->> Guarda o node da Inspeção
-      lNodeInspecao := XMLDocument.DocumentElement.ChildNodes.Get(i).ChildNodes.First;
-
-      edtCentroOrigem.Text := lNodeInspecao.ChildNodes['CENTRO_ORIGEM'].Text;
-
-      lNodeItens := lNodeInspecao.ChildNodes['ITENS'];
-      memTeste.Lines.Text := lNodeItens.XML;
-
-    end;
-
-  end;
-}
-
 end;
 
 end.

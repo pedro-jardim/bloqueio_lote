@@ -60,7 +60,7 @@ var
   i, x : integer;
   lValido : Boolean;
   cd_bloqueio : Integer;
-  nm_oper : String;
+  nm_oper, id : String;
   listaLPN : TStringList;
 begin
 
@@ -192,7 +192,13 @@ begin
     //-------------------------------------------------------------
     //-->> Retorno de Sucesso
     //-------------------------------------------------------------
-    Result.id       := '1234';
+    id := '';
+    if cd_bloqueio = 0 then
+      id := '-1'
+    else
+      id := IntToStr(cd_bloqueio);
+
+    Result.id       := id;
     Result.sucesso  := 'S';
     Result.mensagem := '(MSGWMS) Operação Realizada com Sucesso!';
 

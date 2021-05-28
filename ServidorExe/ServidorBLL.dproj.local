@@ -21,13 +21,13 @@
     <Transaction>2021/05/04 10:09:26.000.248,C:\GBS-2021\BLL2021\ServidorExe\udmBloqueioLote.dfm=C:\GBS-2021\BLL2021\ServidorExe\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="udmBloqueioLote.pas"/>
+    <File Path="udmBloqueioLote.dfm"/>
     <File Path="uServidor.pas"/>
     <File Path="uServidor.dfm"/>
     <File Path="uServidorBLLImpl.pas"/>
     <File Path="uServidorBLLIntf.pas"/>
     <File Path="WebModuleUnit.pas"/>
     <File Path="WebModuleUnit.dfm"/>
-    <File Path="udmBloqueioLote.pas"/>
-    <File Path="udmBloqueioLote.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

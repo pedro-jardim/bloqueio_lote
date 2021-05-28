@@ -5,12 +5,11 @@ object dmBloqueioLote: TdmBloqueioLote
   Width = 385
   object FDConnection: TFDConnection
     Params.Strings = (
-      'Database=EGISSQL_GNSF'
+      'Database=TESTE5'
       'User_Name=sa'
       'Password=sql@127'
       'Server=186.202.42.2'
       'DriverID=MSSQL')
-    Connected = True
     LoginPrompt = False
     Left = 40
     Top = 40
@@ -22,7 +21,7 @@ object dmBloqueioLote: TdmBloqueioLote
       'values'
       '(1, :nm_arquivo, getdate())')
     Left = 40
-    Top = 104
+    Top = 96
     ParamData = <
       item
         Name = 'NM_ARQUIVO'
@@ -31,8 +30,8 @@ object dmBloqueioLote: TdmBloqueioLote
       end>
   end
   object MSSQLDriverLink: TFDPhysMSSQLDriverLink
-    Left = 32
-    Top = 168
+    Left = 40
+    Top = 160
   end
   object stpGeraBloqueioLote: TFDStoredProc
     Connection = FDConnection
