@@ -11,8 +11,8 @@
     <Transaction>2021/04/25 10:30:21.000.230,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\uArquivoBloqueio.pas=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\Unit2.pas</Transaction>
     <Transaction>2021/04/25 11:21:51.000.493,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\uArquivoBloqueio.pas=</Transaction>
     <Transaction>2021/04/25 11:21:57.000.832,=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\Unit2.pas</Transaction>
-    <Transaction>2021/04/25 11:41:50.000.190,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\uBloqueioLote.dfm=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\Unit2.dfm</Transaction>
     <Transaction>2021/04/25 11:41:50.000.190,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\uBloqueioLote.pas=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\Unit2.pas</Transaction>
+    <Transaction>2021/04/25 11:41:50.000.190,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\uBloqueioLote.dfm=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\Unit2.dfm</Transaction>
     <Transaction>2021/04/25 16:53:48.000.099,=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\Unit1.pas</Transaction>
     <Transaction>2021/04/25 16:54:52.000.058,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\Unit1.pas=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\udmBloqueio.pas</Transaction>
     <Transaction>2021/04/25 16:54:52.000.058,C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\Unit1.dfm=C:\Users\pedro\Documents\Embarcadero\Studio\Projects\BloqueioLote\BLL2021\udmBloqueio.dfm</Transaction>
@@ -22,8 +22,8 @@
     <Transaction>2021/04/27 23:20:03.000.793,=C:\GBS-2021\Bloqueio de Lote\BLL2021\ServiceIntegracaoWMS.pas</Transaction>
     <Transaction>2021/04/27 23:20:24.000.632,C:\GBS-2021\Bloqueio de Lote\BLL2021\uServiceIntegracaoWMS.pas=C:\GBS-2021\Bloqueio de Lote\BLL2021\ServiceIntegracaoWMS.pas</Transaction>
     <Transaction>2021/04/27 23:22:10.000.307,=C:\GBS-2021\Bloqueio de Lote\BLL2021\Unit2.pas</Transaction>
-    <Transaction>2021/04/27 23:23:21.000.124,C:\GBS-2021\Bloqueio de Lote\BLL2021\uDestinacao.pas=C:\GBS-2021\Bloqueio de Lote\BLL2021\Unit2.pas</Transaction>
     <Transaction>2021/04/27 23:23:21.000.124,C:\GBS-2021\Bloqueio de Lote\BLL2021\uDestinacao.dfm=C:\GBS-2021\Bloqueio de Lote\BLL2021\Unit2.dfm</Transaction>
+    <Transaction>2021/04/27 23:23:21.000.124,C:\GBS-2021\Bloqueio de Lote\BLL2021\uDestinacao.pas=C:\GBS-2021\Bloqueio de Lote\BLL2021\Unit2.pas</Transaction>
     <Transaction>2021/05/03 23:57:26.000.553,=C:\GBS-2021\BLL2021\BLL2021\IServidorBLL1.pas</Transaction>
     <Transaction>2021/05/03 23:58:06.000.242,C:\GBS-2021\BLL2021\BLL2021\IServidorBLLProd.pas=C:\GBS-2021\BLL2021\BLL2021\IServidorBLL1.pas</Transaction>
     <Transaction>2021/05/04 00:00:17.000.655,C:\GBS-2021\BLL2021\BLL2021\uIServidorBLLProd.pas=C:\GBS-2021\BLL2021\BLL2021\IServidorBLLProd.pas</Transaction>
@@ -41,5 +41,25 @@
     <Transaction>2021/05/26 10:33:59.000.966,C:\GBS-2021\BLL2021\BLL2021\uControleBloqueioLote.pas=C:\GBS-2021\BLL2021\BLL2021\Unit2.pas</Transaction>
     <Transaction>2021/05/26 14:51:16.000.132,C:\GBS-2021\BLL2021\BLL2021\uTestes.pas=</Transaction>
     <Transaction>2021/05/26 16:14:56.000.596,=C:\GBS-2021\BLL2021\BLL2021\uIntegracaoUnilever.pas</Transaction>
+    <Transaction>2021/06/06 22:34:35.000.525,=C:\GBS-2021\BLL2021\BLL2021\uBloqueio.pas</Transaction>
   </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="uBloqueioLote.pas"/>
+    <File Path="uBloqueioLote.dfm"/>
+    <File Path="uControleBloqueioLote.pas"/>
+    <File Path="uControleBloqueioLote.dfm"/>
+    <File Path="uDestinacao.pas"/>
+    <File Path="uDestinacao.dfm"/>
+    <File Path="udmBloqueio.pas"/>
+    <File Path="udmBloqueio.dfm"/>
+    <File Path="uIdmBloqueioLote.pas"/>
+    <File Path="uIntegracaoUnilever.pas"/>
+    <File Path="uIServidorBLL.pas"/>
+    <File Path="uIServidorBLLProd.pas"/>
+    <File Path="uPrincipal.pas"/>
+    <File Path="uPrincipal.dfm"/>
+    <File Path="uServiceIntegracaoWMS.pas"/>
+    <File Path="uBloqueio.pas"/>
+    <File Path="uBloqueio.dfm"/>
+  </ProjectSortOrder>
 </BorlandProject>

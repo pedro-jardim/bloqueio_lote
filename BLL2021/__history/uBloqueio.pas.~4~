@@ -1,0 +1,132 @@
+unit uBloqueio;
+
+interface
+
+uses
+  udmBloqueio,
+  uIntegracaoUnilever,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Soap.InvokeRegistry, System.Net.URLClient, Soap.Rio, Soap.SOAPHTTPClient;
+
+type
+  TfrmBloqueio = class(TForm)
+    ScrollBox1: TScrollBox;
+    GroupBox1: TGroupBox;
+    Label2: TLabel;
+    edtCodBloqueioWeb: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label7: TLabel;
+    edtQtdeCaixa: TEdit;
+    edtCodLPN: TEdit;
+    pnlResult: TPanel;
+    lblRetorno: TLabel;
+    pnlConfirmacao: TPanel;
+    Button1: TButton;
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+    procedure Bloqueio;
+    procedure InsereMovimento(const pLPN: string);
+  public
+    { Public declarations }
+    ic_confirmacao : Boolean;
+    cd_lpn,
+    cd_bloqueio_web,
+    qt_bloqueio :String
+
+  end;
+
+var
+  frmBloqueio: TfrmBloqueio;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TfrmBloqueio.InsereMovimento(const pLPN: string);
+begin
+
+  with dmBloqueio do
+  begin
+    try
+      qryInsereMovimento.Close;
+      qryInsereMovimento.ParamByName('cd_motivo_bloqueio').Value      := StrToIntDef(stpConsultaBloqueioLotenm_codigo_motivo.AsString,0);
+      qryInsereMovimento.ParamByName('cd_local_bloqueio').Value       := dmBloqueio.qryParametroLogisticacd_local_bloqueio_unilever.AsInteger;
+      qryInsereMovimento.ParamByName('cd_lote_produto').Value         := stpConsultaBloqueioLotecd_lote_produto.AsInteger;
+      qryInsereMovimento.ParamByName('cd_produto').Value              := stpConsultaBloqueioLotecd_produto.AsInteger;
+      qryInsereMovimento.ParamByName('nm_ref_lote_produto').Value     := stpConsultaBloqueioLotenm_ref_lote_produto.AsString;
+      qryInsereMovimento.ParamByName('qt_movimento').Value            := stpConsultaBloqueioLoteqt_produto.AsFloat;
+      qryInsereMovimento.ParamByName('cd_fase_produto').Value         := 0;
+      qryInsereMovimento.ParamByName('dt_bloqueio_movimento').Value   := stpConsultaBloqueioLotedt_bloqueio.AsDateTime;
+      qryInsereMovimento.ParamByName('cd_lpn_produto').Value          := stpConsultaBloqueioLotenm_cod_lpn.AsString;
+      qryInsereMovimento.ExecSQL;
+    except
+      on E:exception do
+      begin
+        ShowMessage('Atenção! Não foi possível gerar o movimento de bloqueio de lote');
+        Abort;
+      end;
+    end;
+  end;
+
+end;
+
+procedure TfrmBloqueio.Button1Click(Sender: TObject);
+begin
+  Bloqueio;
+end;
+
+procedure TfrmBloqueio.Bloqueio;
+var
+  lValido    : Boolean;
+  msgRetorno : String;
+begin
+  //--------------------------------------------------
+  //-->> Confirma a Destinação
+  //--------------------------------------------------
+  lValido := DestinacaoLote(
+              cd_bloqueio_web,                                                     //CodBloqueioWeb
+              '13',                                                                //CodAcao
+              dmBloqueio.qryParametroLogisticacd_local_bloqueio_unilever.asstring, //CodLocalBloqueio
+              cd_lpn,                                                              //Numero da LPN
+              msgRetorno                                                           //Mensagem de Retorno
+            );
+
+  if lValido then
+  begin
+    AtualizaDestinacao(cd_lpn);
+    lblRetorno.Caption := 'LPN ' + cd_lpn +' - Destinada com Sucesso!';
+  end
+  else
+    lblRetorno.Caption := msgRetorno;
+
+  Application.ProcessMessages;
+  Sleep(2000);
+
+end;
+
+procedure TfrmBloqueio.FormCreate(Sender: TObject);
+begin
+  with dmBloqueio.qryParametroLogistica do
+  begin
+    Close;
+    Open;
+  end;
+end;
+
+procedure TfrmBloqueio.FormShow(Sender: TObject);
+begin
+
+  pnlConfirmacao.Visible := ic_confirmacao;
+
+  if not ic_confirmacao then
+    Destinacao;
+
+end;
+
+end.

@@ -13,7 +13,8 @@ uses
   uIServidorBLLProd in 'uIServidorBLLProd.pas',
   uIdmBloqueioLote in 'uIdmBloqueioLote.pas',
   uControleBloqueioLote in 'uControleBloqueioLote.pas' {frmControleBloqueioLote},
-  uIntegracaoUnilever in 'uIntegracaoUnilever.pas';
+  uIntegracaoUnilever in 'uIntegracaoUnilever.pas',
+  uBloqueio in 'uBloqueio.pas' {frmBloqueio};
 
 {$R *.res}
 

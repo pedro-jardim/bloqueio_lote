@@ -1,0 +1,52 @@
+unit uDestinacao;
+
+interface
+
+uses
+  udmBloqueio,
+  uIntegracaoUnilever,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Soap.InvokeRegistry,
+  System.Net.URLClient, Soap.Rio, Soap.SOAPHTTPClient, Vcl.ExtCtrls;
+
+type
+  TfrmDestinacao = class(TForm)
+    ScrollBox1: TScrollBox;
+    GroupBox1: TGroupBox;
+    Label2: TLabel;
+    edtCodBloqueioWeb: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label7: TLabel;
+    edtQtdeCaixa: TEdit;
+    edtCodLPN: TEdit;
+    pnlResult: TPanel;
+    lblRetorno: TLabel;
+    pnlConfirmacao: TPanel;
+    Button1: TButton;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    ic_confirmacao : Boolean;
+  end;
+
+var
+  frmDestinacao: TfrmDestinacao;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TfrmDestinacao.FormShow(Sender: TObject);
+begin
+
+  pnlConfirmacao.Visible := ic_confirmacao;
+
+
+
+end;
+
+end.

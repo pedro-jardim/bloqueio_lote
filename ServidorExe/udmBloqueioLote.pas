@@ -33,6 +33,7 @@ type
     stpGeraBloqueioLote: TFDStoredProc;
     stpGeraBloqueioLoteItens: TFDStoredProc;
     stpGeraBloqueioLotecd_bloqueio_lote: TIntegerField;
+    stpGeraEmailBloqueio: TFDStoredProc;
     procedure SoapDataModuleDestroy(Sender: TObject);
   private
 
@@ -60,7 +61,7 @@ var
   i, x : integer;
   lValido : Boolean;
   cd_bloqueio : Integer;
-  nm_oper, id : String;
+  nm_oper, id, nm_laudo : String;
   listaLPN : TStringList;
 begin
 
@@ -121,8 +122,9 @@ begin
         //-->> Guarda o node de Itens
         lNodeItens := lNodeInspecao.ChildNodes['ITENS'];
         nm_oper    := lNodeItens.Attributes['IDENT_OPER'];
-        ParamByName('@nm_ident_oper').AsString := nm_oper;
-        ParamByName('@nm_laudo_bloqueio').AsString := lNodeItens.Attributes['NUM_LAUDO_BLOQUEIO'];
+        nm_laudo   := lNodeItens.Attributes['NUM_LAUDO_BLOQUEIO'];
+        ParamByName('@nm_ident_oper').AsString     := nm_oper;
+        ParamByName('@nm_laudo_bloqueio').AsString := nm_laudo;
 
         //-->> Salva o XML
         ParamByName('@ds_arquivo_xml').AsMemo := lxml.XML.Text;
@@ -168,6 +170,7 @@ begin
           ParamByName('@nm_codigo_motivo').AsString       := lNodeItem.ChildNodes['CODIGO_MOTIVO'].Text;
           ParamByName('@nm_descricao_motivo').AsString    := lNodeItem.ChildNodes['DESCRICAO_MOTIVO'].Text;
           ParamByName('@nm_solicitante_motivo').AsString  := lNodeItem.ChildNodes['SOLICITANTE_BLOQUEIO'].Text;
+          ParamByName('@nm_laudo_bloqueio').AsString      := nm_laudo;
           ExecProc;
         end;
 
@@ -201,6 +204,28 @@ begin
     Result.id       := id;
     Result.sucesso  := 'S';
     Result.mensagem := '(MSGWMS) Operação Realizada com Sucesso!';
+
+    //-------------------------------------------------------------
+    //-->> Envio de Email
+    try
+      with stpGeraEmailBloqueio do
+      begin
+        Close;
+        if nm_oper = 'add' then
+        begin
+          ParamByName('@cd_parametro').AsInteger := 1;
+          ParamByName('@cd_bloqueio').AsInteger  := cd_bloqueio;
+        end
+        else if nm_oper = 'des' then
+          ParamByName('@cd_parametro').AsInteger := 2
+        else if nm_oper = 'enc' then
+          ParamByName('@cd_parametro').AsInteger := 3;
+        ParamByName('@cd_bloqueio').AsInteger    := cd_bloqueio;
+        ExecProc;
+        Close;
+      end;
+    except
+    end;
 
   end;
 

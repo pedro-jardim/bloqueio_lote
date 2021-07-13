@@ -5,7 +5,7 @@ object dmBloqueioLote: TdmBloqueioLote
   Width = 385
   object FDConnection: TFDConnection
     Params.Strings = (
-      'Database=TESTE5'
+      'Database=EGISSQL_GNSF'
       'User_Name=sa'
       'Password=sql@127'
       'Server=186.202.42.2'
@@ -405,14 +405,14 @@ object dmBloqueioLote: TdmBloqueioLote
         Name = '@nm_categoria'
         DataType = ftString
         ParamType = ptInput
-        Size = 10
+        Size = 30
       end
       item
         Position = 23
         Name = '@nm_divisao'
         DataType = ftString
         ParamType = ptInput
-        Size = 10
+        Size = 30
       end
       item
         Position = 24
@@ -474,6 +474,38 @@ object dmBloqueioLote: TdmBloqueioLote
         DataType = ftString
         ParamType = ptInput
         Size = 100
+      end>
+  end
+  object stpGeraEmailBloqueio: TFDStoredProc
+    Connection = FDConnection
+    StoredProcName = 'dbo.pr_gera_email_bloqueio_pallet'
+    Left = 152
+    Top = 160
+    ParamData = <
+      item
+        Position = 1
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        ParamType = ptResult
+      end
+      item
+        Position = 2
+        Name = '@cd_parametro'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = '@cd_bloqueio'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 4
+        Name = '@cd_lpn'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 70
       end>
   end
 end

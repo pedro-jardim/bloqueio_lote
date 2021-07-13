@@ -15,15 +15,15 @@ type
     ScrollBox1: TScrollBox;
     pnlTop: TPanel;
     pnlBottom: TPanel;
-    Button1: TButton;
-    Button2: TButton;
-    edtTempo: TEdit;
-    Label1: TLabel;
+    btnIniciar: TButton;
+    btnParar: TButton;
     lblStatus: TLabel;
     timer: TTimer;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure timerTimer(Sender: TObject);
+    procedure btnIniciarClick(Sender: TObject);
+    procedure btnPararClick(Sender: TObject);
   private
     { Private declarations }
     procedure AbrirDataSet;
@@ -31,9 +31,11 @@ type
     procedure InsereMovimento;
     procedure AtualizaDestinacao(const pLPN: string);
     procedure AtualizaEncerramento(const pLPN: string);
+    procedure Parada;
   public
     { Public declarations }
-    iControle : Integer;
+    iControle, iTempo : Integer;
+    lParada   : Boolean;
   end;
 
 var
@@ -52,8 +54,6 @@ begin
     Close;
     ParamByName('@cd_parametro').AsInteger    := 0;
     ParamByName('@cd_lpn_produto').AsString   := '';
-    //ParamByName('@dt_inicial').AsDateTime     := null;
-    //ParamByName('@dt_final').AsDateTime       := null;
     ParamByName('@ic_encerrado').AsString     := 'N';
     ParamByName('@cd_usuario').AsInteger      := 0;
     Open;
@@ -80,6 +80,25 @@ begin
     qryAtualizaMovimentoEncerramento.ExecSQL;
     qryAtualizaMovimentoEncerramento.Close;
   end;
+end;
+
+procedure TfrmControleBloqueioLote.btnIniciarClick(Sender: TObject);
+begin
+  lblStatus.Caption := 'Próxima atualização em 10 segundo(s)';
+  iControle := 0;
+  lParada := False;
+
+  Application.ProcessMessages;
+
+  timer.Enabled := True;
+
+end;
+
+procedure TfrmControleBloqueioLote.btnPararClick(Sender: TObject);
+begin
+
+  Parada;
+
 end;
 
 procedure TfrmControleBloqueioLote.ExecutaConfirmacao;
@@ -267,18 +286,20 @@ end;
 
 procedure TfrmControleBloqueioLote.FormCreate(Sender: TObject);
 begin
+
   with dmBloqueio.qryParametroLogistica do
   begin
     Close;
     Open;
   end;
 
-  lblStatus.Caption := 'Aguardando a próxima consulta';
+  lblStatus.Caption := 'A consulta não está em operação...';
 
-  iControle := 10000;
+  iControle := 0;
+  iTempo := 10;
+  timer.Interval := 1000;
+  timer.Enabled := False;
 
-  timer.Interval := iControle;
-  timer.Enabled  := True;
 end;
 
 procedure TfrmControleBloqueioLote.FormShow(Sender: TObject);
@@ -313,12 +334,40 @@ begin
 
 end;
 
+procedure TfrmControleBloqueioLote.Parada;
+begin
+  lblStatus.Caption := 'A consulta não está em operação...';
+
+  lParada   := True;
+  iTempo    := 10;
+  iControle := 0;
+end;
+
 procedure TfrmControleBloqueioLote.timerTimer(Sender: TObject);
 begin
 
-  timer.Enabled := False;
-  ExecutaConfirmacao;
-  timer.Enabled := True;
+  if lParada then
+  begin
+    Parada;
+    Abort;
+  end;
+
+  inc(iControle);
+
+  iTempo :=  10 - iControle;
+
+  lblStatus.Caption := 'Próxima atualização em '+ IntToStr(iTempo+1)+' segundo(s)';
+
+  if iControle > 10 then
+  begin
+    timer.Enabled := False;
+    ExecutaConfirmacao;
+    iTempo := 10;
+    iControle := 0;
+    timer.Enabled := True;
+  end;
+
+  Application.ProcessMessages;
 
 end;
 

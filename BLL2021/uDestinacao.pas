@@ -3,60 +3,39 @@ unit uDestinacao;
 interface
 
 uses
-  uServiceIntegracaoWMS,
+  udmBloqueio,
+  uIntegracaoUnilever,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Soap.InvokeRegistry,
-  System.Net.URLClient, Soap.Rio, Soap.SOAPHTTPClient;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Soap.InvokeRegistry, System.Net.URLClient, Soap.Rio, Soap.SOAPHTTPClient;
 
 type
   TfrmDestinacao = class(TForm)
     ScrollBox1: TScrollBox;
     GroupBox1: TGroupBox;
-    btnSetBloqueioLote: TButton;
-    Label1: TLabel;
-    edtCodAcaoBL: TEdit;
     Label2: TLabel;
-    edtCodBloqueioWebBL: TEdit;
+    edtCodBloqueioWeb: TEdit;
     Label3: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
-    edtEmailUsuarioBL: TEdit;
-    edtObsBL: TEdit;
-    Label6: TLabel;
-    Label7: TLabel;
-    edtQtdeCaixaBL: TEdit;
-    edtCodLocalBloqueioBL: TEdit;
-    GroupBox2: TGroupBox;
-    Label9: TLabel;
-    Label10: TLabel;
-    Label12: TLabel;
-    Label13: TLabel;
-    btnSetDestinacao: TButton;
-    edtCodBloqueioWebDes: TEdit;
-    edtObsDes: TEdit;
-    edtCodDestinacaoDes: TEdit;
-    edtLocalBloqueioDes: TEdit;
-    memoRetorno: TMemo;
-    GroupBox3: TGroupBox;
-    Label8: TLabel;
-    Label11: TLabel;
-    Label14: TLabel;
-    Label15: TLabel;
-    btnSetFinalizacao: TButton;
-    edtCodBloqueioEnc: TEdit;
-    edtObsEnc: TEdit;
-    edtCodDestinacaoEnc: TEdit;
-    edtLocalBloqueioEnc: TEdit;
-    HTTPRIO1: THTTPRIO;
-    procedure btnSetBloqueioLoteClick(Sender: TObject);
-    procedure btnSetDestinacaoClick(Sender: TObject);
-    procedure btnSetFinalizacaoClick(Sender: TObject);
-    procedure HTTPRIO1BeforeExecute(const MethodName: string;
-      SOAPRequest: TStream);
+    edtCodLPN: TEdit;
+    pnlResult: TPanel;
+    lblRetorno: TLabel;
+    pnlConfirmacao: TPanel;
+    Button1: TButton;
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
+    procedure Destinacao;
+    procedure AtualizaDestinacao(const pLPN: string);
   public
     { Public declarations }
+    ic_confirmacao : Boolean;
+    cd_lpn,
+    cd_bloqueio_web,
+    qt_bloqueio,
+    cd_ : String;
   end;
 
 var
@@ -66,89 +45,71 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmDestinacao.btnSetBloqueioLoteClick(Sender: TObject);
-var
-  Servidor : IintegracaoWMS;
-  Data : DataBloqueio2;
-begin
-  try
-    Data := DataBloqueio2.Create;
-    Data.COD_ACAO := edtCodAcaoBL.Text;
-    Data.COD_BLOQUEIO_WEB := edtCodBloqueioWebBL.Text;
-    Data.COD_LOCAL_BLOQUEIO := edtCodLocalBloqueioBL.Text;
-    Data.EMAIL_USUARIO := edtCodLocalBloqueioBL.Text;
-    Data.OBSERVACAO := edtObsBL.Text;
-    Data.QTDE_CAIXAS := edtQtdeCaixaBL.Text;
-    try
-      Servidor := uServiceIntegracaoWMS.GetIintegracaoWMS;
-      memoRetorno.Lines.Text := Servidor.SetBloqueio(Data);
-    except
-      on e:exception do
-      begin
-        showmessage('Não foi possível confirmar o bloqueio do lote');
-      end;
-    end;
-  finally
 
+procedure TfrmDestinacao.AtualizaDestinacao(const pLPN: string);
+begin
+  with dmBloqueio do
+  begin
+    qryAtualizaMovimentoDestinacao.Close;
+    qryAtualizaMovimentoDestinacao.ParamByName('lpn').AsString := pLPN;
+    qryAtualizaMovimentoDestinacao.ExecSQL;
+    qryAtualizaMovimentoDestinacao.Close;
   end;
 end;
 
-procedure TfrmDestinacao.btnSetDestinacaoClick(Sender: TObject);
-var
-  Servidor : IintegracaoWMS;
-  Data : DataBloqueioDest2;
+procedure TfrmDestinacao.Button1Click(Sender: TObject);
 begin
-  try
-    Data := DataBloqueioDest2.Create;
-    Data.COD_BLOQUEIO_WEB   := edtCodBloqueioWebDes.Text;
-    Data.COD_LOCAL_BLOQUEIO := edtLocalBloqueioDes.Text;
-    Data.OBSERVACAO         := edtObsDes.Text;
-    Data.COD_DESTINACAO     := edtCodDestinacaoDes.Text;
-    try
-      Servidor               := uServiceIntegracaoWMS.GetIintegracaoWMS(false,'',HTTPRIO1);
-      memoRetorno.Lines.Text := Servidor.SetDestinacao(Data);
-    except
-      on e:exception do
-      begin
-        showmessage('Não foi possível confirmar o bloqueio do lote');
-      end;
-    end;
-  finally
-
-  end;
+  Destinacao;
 end;
 
-procedure TfrmDestinacao.btnSetFinalizacaoClick(Sender: TObject);
+procedure TfrmDestinacao.Destinacao;
 var
-  Servidor : IintegracaoWMS;
-  Data : DataBloqueioDest2;
+  lValido    : Boolean;
+  msgRetorno : String;
 begin
-  try
-    Data := DataBloqueioDest2.Create;
-    Data.COD_BLOQUEIO_WEB   := edtCodBloqueioEnc.Text;
-    Data.COD_LOCAL_BLOQUEIO := edtLocalBloqueioEnc.Text;
-    Data.OBSERVACAO         := edtObsEnc.Text;
-    Data.COD_DESTINACAO     := edtCodDestinacaoEnc.Text;
-    try
-      Servidor := uServiceIntegracaoWMS.GetIintegracaoWMS;
-      memoRetorno.Lines.Text := Servidor.SetFinalizacao(Data);
-    except
-      on e:exception do
-      begin
-        showmessage('Não foi possível confirmar o bloqueio do lote');
-      end;
-    end;
-  finally
+  //--------------------------------------------------
+  //-->> Confirma a Destinação
+  //--------------------------------------------------
+  lValido := DestinacaoLote(
+              cd_bloqueio_web,                                                     //CodBloqueioWeb
+              '13',                                                                //CodAcao
+              dmBloqueio.qryParametroLogisticacd_local_bloqueio_unilever.asstring, //CodLocalBloqueio
+              cd_lpn,                                                              //Numero da LPN
+              msgRetorno                                                           //Mensagem de Retorno
+            );
 
-  end;
+  if lValido then
+  begin
+    AtualizaDestinacao(cd_lpn);
+    lblRetorno.Caption := 'LPN ' + cd_lpn +' - Destinada com Sucesso!';
+  end
+  else
+    lblRetorno.Caption := msgRetorno;
+
+  Application.ProcessMessages;
+  Sleep(2000);
 
 end;
 
-procedure TfrmDestinacao.HTTPRIO1BeforeExecute(const MethodName: string;
-  SOAPRequest: TStream);
+procedure TfrmDestinacao.FormCreate(Sender: TObject);
+begin
+  with dmBloqueio.qryParametroLogistica do
+  begin
+    Close;
+    Open;
+  end;
+end;
+
+procedure TfrmDestinacao.FormShow(Sender: TObject);
 begin
 
-  memoRetorno.Lines.Text := SOAPRequest.ToString;
+  pnlConfirmacao.Visible := ic_confirmacao;
+
+  edtCodLPN.Text         := cd_lpn;
+  edtCodBloqueioWeb.Text := cd_bloqueio_web;
+
+  if not ic_confirmacao then
+    Destinacao;
 
 end;
 

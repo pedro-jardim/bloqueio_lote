@@ -7,6 +7,7 @@ uses
   uIServidorBLLProd,
   uBloqueioLote,
   uDestinacao,
+  uBloqueio,
   uControleBloqueioLote,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, System.UITypes,
   Vcl.Graphics,  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ComCtrls, Vcl.StdCtrls;
@@ -40,9 +41,10 @@ implementation
 
 procedure TfrmPrincipal.btnBloqueioLoteClick(Sender: TObject);
 begin
-  with TfrmBloqueioLote.Create(Self) do
+  with TfrmBloqueio.Create(Self) do
   begin
     try
+      ic_confirmacao := true;
       ShowModal;
     finally
       Free;
@@ -55,6 +57,7 @@ begin
   with TfrmDestinacao.Create(Self) do
   begin
     try
+      ic_confirmacao := true;
       ShowModal;
     finally
       Free;
@@ -83,14 +86,15 @@ begin
 end;
 
 procedure TfrmPrincipal.btnTesteServidorClick(Sender: TObject);
-var
-  Servidor : IServidorBLL;
-  ServidorProd : IServidorBLLProd;
 begin
-
-  ServidorProd := uIServidorBLLProd.GetIServidorBLL;
-  Showmessage( ServidorProd.mensagemBoasVindas );
-
+  with TfrmBloqueioLote.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
 end;
 
 end.

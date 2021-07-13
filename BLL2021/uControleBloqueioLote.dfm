@@ -79,35 +79,23 @@ object frmControleBloqueioLote: TfrmControleBloqueioLote
       Height = 41
       Align = alTop
       TabOrder = 1
-      object Label1: TLabel
-        Left = 192
-        Top = 16
-        Width = 109
-        Height = 13
-        Caption = 'Segundos p/ Execu'#231#227'o'
-      end
-      object Button1: TButton
+      object btnIniciar: TButton
         Left = 11
         Top = 9
         Width = 75
         Height = 25
         Caption = 'Iniciar'
         TabOrder = 0
+        OnClick = btnIniciarClick
       end
-      object Button2: TButton
+      object btnParar: TButton
         Left = 96
         Top = 9
         Width = 75
         Height = 25
         Caption = 'Parar'
         TabOrder = 1
-      end
-      object edtTempo: TEdit
-        Left = 311
-        Top = 11
-        Width = 121
-        Height = 21
-        TabOrder = 2
+        OnClick = btnPararClick
       end
     end
     object pnlBottom: TPanel
@@ -138,6 +126,7 @@ object frmControleBloqueioLote: TfrmControleBloqueioLote
     end
   end
   object timer: TTimer
+    Enabled = False
     OnTimer = timerTimer
     Left = 248
     Top = 176

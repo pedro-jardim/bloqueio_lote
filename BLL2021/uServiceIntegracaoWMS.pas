@@ -1,10 +1,10 @@
 // ************************************************************************ //
 // The types declared in this file were generated from data read from the
 // WSDL File described below:
-// WSDL     : http://bloqueio-bra-unilever-hml.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc?singleWsdl
-//  >Import : http://bloqueio-bra-unilever-hml.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc?singleWsdl>0
-//  >Import : http://bloqueio-bra-unilever-hml.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc?singleWsdl>1
-//  >Import : http://bloqueio-bra-unilever-hml.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc?singleWsdl>2
+// WSDL     : http://bloqueio-bra-unilever.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc?singleWsdl
+//  >Import : http://bloqueio-bra-unilever.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc?singleWsdl>0
+//  >Import : http://bloqueio-bra-unilever.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc?singleWsdl>1
+//  >Import : http://bloqueio-bra-unilever.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc?singleWsdl>2
 // Encoding : utf-8
 // Version  : 1.0
 // (27/04/2021 23:20:03 - - $Rev: 101104 $)
@@ -142,7 +142,7 @@ type
   // binding   : BasicHttpBinding_IintegracaoWMS
   // service   : BloqueioWebService
   // port      : BasicHttpBinding_IintegracaoWMS
-  // URL       : http://bloqueio-bra-unilever-hml.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc
+  // URL       : http://bloqueio-bra-unilever.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc
   // ************************************************************************ //
   IintegracaoWMS = interface(IInvokable)
   ['{2B05305A-78ED-B351-3DA3-8B71C1D55C3E}']
@@ -159,8 +159,8 @@ implementation
 
 function GetIintegracaoWMS(UseWSDL: Boolean; Addr: string; HTTPRIO: THTTPRIO): IintegracaoWMS;
 const
-  defWSDL = 'http://bloqueio-bra-unilever-hml.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc?singleWsdl';
-  defURL  = 'http://bloqueio-bra-unilever-hml.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc';
+  defWSDL = 'http://bloqueio-bra-unilever.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc?singleWsdl';
+  defURL  = 'http://bloqueio-bra-unilever.opscontent.com.br/BloqueioService/ServiceIntegracaoWMS.svc';
   defSvc  = 'BloqueioWebService';
   defPrt  = 'BasicHttpBinding_IintegracaoWMS';
 var
