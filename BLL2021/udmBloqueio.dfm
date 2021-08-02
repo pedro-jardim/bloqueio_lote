@@ -9,7 +9,6 @@ object dmBloqueio: TdmBloqueio
       'Password=sql@127'
       'Server=186.202.42.2'
       'DriverID=MSSQL')
-    Connected = True
     LoginPrompt = False
     Left = 40
     Top = 40
@@ -402,8 +401,8 @@ object dmBloqueio: TdmBloqueio
       'set'
       '  dt_confirmacao_encerramento = getdate(),'
       
-        '  dt_liberacao_movimento = case when cd_destinacao_bloqueio = 5 ' +
-        'then getdate() else null end'
+        '  dt_liberacao_movimento = case when cd_destinacao_bloqueio in (' +
+        '1,5) then getdate() else null end'
       'where '
       '  cd_lpn_produto = :lpn')
     Left = 336

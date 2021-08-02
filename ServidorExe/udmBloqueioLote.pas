@@ -197,7 +197,7 @@ begin
     //-------------------------------------------------------------
     id := '';
     if cd_bloqueio = 0 then
-      id := '-1'
+      id := '1'
     else
       id := IntToStr(cd_bloqueio);
 

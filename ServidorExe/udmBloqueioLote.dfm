@@ -10,6 +10,7 @@ object dmBloqueioLote: TdmBloqueioLote
       'Password=sql@127'
       'Server=186.202.42.2'
       'DriverID=MSSQL')
+    Connected = True
     LoginPrompt = False
     Left = 40
     Top = 40
@@ -44,7 +45,6 @@ object dmBloqueioLote: TdmBloqueioLote
         Name = '@RETURN_VALUE'
         DataType = ftInteger
         ParamType = ptResult
-        Value = 0
       end
       item
         Position = 2
@@ -181,14 +181,14 @@ object dmBloqueioLote: TdmBloqueioLote
         Name = '@nm_categoria'
         DataType = ftString
         ParamType = ptInput
-        Size = 10
+        Size = 50
       end
       item
         Position = 23
         Name = '@nm_divisao'
         DataType = ftString
         ParamType = ptInput
-        Size = 10
+        Size = 50
       end
       item
         Position = 24
@@ -268,7 +268,6 @@ object dmBloqueioLote: TdmBloqueioLote
         Name = '@RETURN_VALUE'
         DataType = ftInteger
         ParamType = ptResult
-        Value = 0
       end
       item
         Position = 2
@@ -405,14 +404,14 @@ object dmBloqueioLote: TdmBloqueioLote
         Name = '@nm_categoria'
         DataType = ftString
         ParamType = ptInput
-        Size = 30
+        Size = 50
       end
       item
         Position = 23
         Name = '@nm_divisao'
         DataType = ftString
         ParamType = ptInput
-        Size = 30
+        Size = 50
       end
       item
         Position = 24

@@ -73,7 +73,8 @@ begin
       sSucesso := iXML.DocumentElement.ChildNodes[1].Text;
       sObs     := iXML.DocumentElement.ChildNodes[2].Text;
 
-      if (StrToIntDef(sID,0) <= 0) or (sSucesso = 'N') then
+      //-->> codAcao 13 (Bloqueio Futuro) retorna erro, porém continuar mesmo assim...
+      if ((StrToIntDef(sID,0) <= 0) or (sSucesso = 'N')) and (codAcao <> '13') then
         Result := False;
 
       msgRetorno := sObs;
@@ -137,7 +138,7 @@ end;
 function EncerramentoLote(const codBloqueioWeb, codDestinacao, codLocalBloqueio, codLPN: string;
                             var msgRetorno: String): Boolean;
 var
-  objEncerramento     : TEncerramento;
+  objEncerramento     : DataBloqueioDest2;
   iIntegracao         : IintegracaoWMS;
   iXML                : IXMLDocument;
   sID, sSucesso, sObs : String;
@@ -145,14 +146,14 @@ begin
   Result:= True;
   try
     try
-      objEncerramento := TEncerramento.Create;
+      objEncerramento  := DataBloqueioDest2.Create;
       objEncerramento.COD_BLOQUEIO_WEB    := codBloqueioWeb;
       objEncerramento.COD_DESTINACAO      := codDestinacao;
       objEncerramento.COD_LOCAL_BLOQUEIO  := codLocalBloqueio;
       objEncerramento.OBSERVACAO          := 'Processado no WMS | WMS Msg: LPN '+ codLPN + ' Finalizada com sucesso';
 
       iIntegracao := GetIintegracaoWMS();
-      msgRetorno  := iIntegracao.SetDestinacao(objEncerramento);
+      msgRetorno  := iIntegracao.SetFinalizacao(objEncerramento);
 
       msgRetorno := '<?xml version="1.0" encoding="ISO-8859-1"?>' + msgRetorno;
       iXML          := NewXMLDocument;
@@ -166,7 +167,7 @@ begin
       if (StrToIntDef(sID,0) <= 0) or (sSucesso = 'N') then
         Result := False;
 
-      msgRetorno := sObs;
+      msgRetorno := sObs + ' Sucesso: ' + sSucesso + ' - ID: ' + sID;
 
     finally
       objEncerramento.Free;

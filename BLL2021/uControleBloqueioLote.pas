@@ -141,13 +141,13 @@ begin
       begin
 
         lValido := BloqueioLote(
-                    '13',                                                             //CodAcao
+                    '13',                                                                   //CodAcao
                     stpConsultaBloqueioLotecd_bloqueio_web.AsString,                        //CodBloqueioWeb
-                    dmBloqueio.qryParametroLogisticacd_local_bloqueio_unilever.asstring, //CodLocalBloqueio
-                    '',                                                               //EmailUsuario
-                    '0',                                                              //Qtde. Caixas
+                    dmBloqueio.qryParametroLogisticacd_local_bloqueio_unilever.asstring,    //CodLocalBloqueio
+                    '',                                                                     //EmailUsuario
+                    '0',                                                                    //Qtde. Caixas
                     stpConsultaBloqueioLotenm_cod_lpn.AsString,                             //Numero da LPN
-                    msgRetorno                                                        //Mensagem de Retorno
+                    msgRetorno                                                              //Mensagem de Retorno
                   );
 
         if lValido then
@@ -199,13 +199,13 @@ begin
       begin
 
         lValido := BloqueioLote(
-                    '99',                                                              //CodAcao
+                    '99',                                                                   //CodAcao
                     stpConsultaBloqueioLotecd_bloqueio_web.AsString,                        //CodBloqueioWeb
-                    dmBloqueio.qryParametroLogisticacd_local_bloqueio_unilever.asstring, //CodLocalBloqueio
-                    '',                                                               //EmailUsuario
-                    '0',                                                              //Qtde. Caixas
+                    dmBloqueio.qryParametroLogisticacd_local_bloqueio_unilever.asstring,    //CodLocalBloqueio
+                    '',                                                                     //EmailUsuario
+                    '0',                                                                    //Qtde. Caixas
                     stpConsultaBloqueioLotenm_cod_lpn.AsString,                             //Numero da LPN
-                    msgRetorno                                                        //Mensagem de Retorno
+                    msgRetorno                                                              //Mensagem de Retorno
                   );
 
         if lValido then
@@ -254,10 +254,10 @@ begin
 
         lValido := EncerramentoLote(
                     stpConsultaBloqueioLotecd_bloqueio_web.AsString,                        //CodBloqueioWeb
-                    '3',                                                              //CodDestinacao
-                    dmBloqueio.qryParametroLogisticacd_local_bloqueio_unilever.asstring, //CodLocalBloqueio
+                    '13',                                                                    //CodDestinacao
+                    dmBloqueio.qryParametroLogisticacd_local_bloqueio_unilever.asstring,    //CodLocalBloqueio
                     stpConsultaBloqueioLotenm_cod_lpn.AsString,                             //Numero da LPN
-                    msgRetorno                                                        //Mensagem de Retorno
+                    msgRetorno                                                              //Mensagem de Retorno
                   );
 
         if lValido then
